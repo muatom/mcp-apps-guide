@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>MCP Apps · מדריך</title>
-<meta name="description" content="מדריך כללי ל-MCP Apps: רכיבים אינטראקטיביים ששרת MCP מציג בתוך הצ'אט של ChatGPT, של Claude ושל מארחים נוספים. למוצר, לעסק ולארכיטקטורה.">
+<meta name="description" content="מדריך תמציתי ל-MCP Apps: מסך אינטראקטיבי של השירות שלכם בתוך הצ'אט של ChatGPT ו-Claude. מה זה, מתי נכון להשתמש, מה זמין בישראל, ואיך זה בנוי.">
 <link rel="icon" href="assets/migdal-tower.png">
 <style>
 /* [A] מותג: פונט, צבעים ומידות. מקור הטוקנים: מערכת העיצוב של מגדל */
@@ -36,6 +36,7 @@ img{max-width:100%;display:block}
 code{font-family:var(--mono);font-size:.84em;direction:ltr;unicode-bidi:isolate;background:var(--mist);padding:0 3px;border-radius:4px;color:var(--ink);overflow-wrap:anywhere}
 td code,th code{overflow-wrap:normal}
 .en{direction:ltr;unicode-bidi:isolate}
+.nw{white-space:nowrap}
 :focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .skip{position:absolute;inset-inline-start:16px;top:-80px;z-index:100;padding:10px 16px;background:var(--ink);color:#fff;border-radius:4px;text-decoration:none;font-weight:700}
 .skip:focus{top:12px}
@@ -51,24 +52,38 @@ td code,th code{overflow-wrap:normal}
 .progress{height:2px}
 .progress span{display:block;height:100%;width:0;background:var(--blue)}
 
-/* [D] פתיח */
+/* [D] פתיח, והדמיית הצ'אט */
 .hero{background:var(--mist);border-bottom:1px solid var(--line-soft)}
-.hero-in{max-width:1240px;margin:0 auto;padding:64px 32px 60px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:56px;align-items:center}
+.hero-in{max-width:1240px;margin:0 auto;padding:60px 32px 56px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:56px;align-items:center}
 .eyebrow{font-weight:700;font-size:15px;color:var(--fg-2)}
 .hero h1{margin-top:10px;font-weight:900;font-size:clamp(44px,6vw,72px);line-height:1.02;letter-spacing:-.01em}
-.hero h1 .he{display:block;margin-top:14px;font-weight:700;font-size:.42em;line-height:1.3;letter-spacing:0;color:var(--fg-2)}
-.lead{margin-top:22px;max-width:34em;font-size:21px;line-height:1.6;color:var(--ink)}
-.audience{margin-top:26px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 14px;font-size:17px;color:var(--fg-body)}
-.audience b{white-space:nowrap}
-.audience a{color:inherit}
-.thesis{padding:30px 28px 28px;border-radius:var(--r-lg);background:var(--ink);color:#fff}
-.thesis-k{font-weight:700;font-size:15px;color:rgba(255,255,255,.72)}
-.thesis-t{margin-top:10px;font-weight:700;font-size:26px;line-height:1.4}
-.thesis-t span{display:block;margin-top:8px;font-weight:400;font-size:19px;line-height:1.55;color:rgba(255,255,255,.85)}
-.thesis-meta{margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.18);font-size:15px;line-height:1.55;color:rgba(255,255,255,.75)}
+.hero h1 .he{display:block;margin-top:14px;font-weight:700;font-size:.4em;line-height:1.3;letter-spacing:0;color:var(--fg-2)}
+.lead{margin-top:22px;max-width:32em;font-size:21px;line-height:1.6;color:var(--ink)}
+.hero-meta{margin-top:20px;max-width:36em;font-size:15px;line-height:1.6;color:var(--fg-2)}
+.mock{justify-self:center;width:100%;max-width:430px;margin:0;padding:16px 16px 18px;border-radius:20px;background:var(--white);box-shadow:0 18px 48px rgba(2,1,64,.12)}
+.mock-bar{display:flex;align-items:center;gap:6px;padding:0 4px 12px;border-bottom:1px solid var(--line-soft);font-size:14px;color:var(--fg-3)}
+.mock-bar i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.mock-bar span{margin-inline-start:6px}
+.msg-u{margin:14px 0 0;margin-inline-start:auto;width:fit-content;max-width:80%;padding:8px 14px;border-radius:16px;background:var(--mist);font-size:16px;line-height:1.5;color:var(--ink)}
+.msg-a{margin-top:14px;font-size:16px;line-height:1.55;color:var(--fg-body)}
+.tag{display:inline-block;margin-bottom:6px;padding:0 8px;border-radius:4px;font-weight:700;font-size:13px;line-height:1.8}
+.tag-m{box-shadow:inset 0 0 0 1px var(--line);color:var(--fg-2)}
+.tag-w{background:var(--ink);color:#fff}
+.wdg{margin-top:12px;padding:14px;border:1.5px solid var(--ink);border-radius:12px}
+.wdg-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.wdg-h b{font-size:17px}
+.wdg-h small{font-size:13px;color:var(--fg-2)}
+.slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:10px}
+.slots span{padding:6px 4px;border-radius:6px;box-shadow:inset 0 0 0 1px var(--line);font-size:14px;line-height:1.35;text-align:center;color:var(--ink)}
+.slots span.on{background:var(--ink);box-shadow:none;color:#fff;font-weight:700}
+.price{display:flex;justify-content:space-between;margin-top:12px;padding-top:10px;border-top:1px solid var(--line-soft);font-size:15px}
+.price b{font-size:17px}
+.terms{margin-top:4px;font-size:14px;line-height:1.5;color:var(--fg-2)}
+.cta{display:block;margin-top:12px;padding:9px 12px;border-radius:4px;background:var(--green);color:var(--ink);font-weight:700;font-size:16px;text-align:center}
+.mock-cap{margin-top:12px;font-size:14px;line-height:1.5;color:var(--fg-2);text-align:start}
 
 /* [E] פריסה */
-.shell{max-width:1240px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:240px minmax(0,1fr);gap:64px}
+.shell{max-width:1240px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:64px}
 .side{position:sticky;top:calc(var(--top-h) + 2px);align-self:start;max-height:calc(100vh - var(--top-h) - 2px);overflow-y:auto;padding:40px 0 32px;scrollbar-width:thin}
 .toc-k{margin:18px 0 6px;padding-inline-start:14px;font-weight:700;font-size:14px;color:var(--fg-3)}
 .toc-k:first-child{margin-top:0}
@@ -82,11 +97,11 @@ main.content{min-width:0;max-width:820px;padding-bottom:40px}
 
 /* [F] פרקים */
 .part{margin-top:96px;padding:22px 0 0;border-top:3px solid var(--ink)}
-.part:first-child{margin-top:64px}
 .part-k{font-weight:700;font-size:15px;color:var(--blue-deep)}
 .part h2{margin-top:6px;font-size:clamp(26px,3vw,34px);line-height:1.25}
 .part p{margin-top:10px;max-width:38em;font-size:19px;color:var(--fg-body)}
 .chapter{margin-top:72px;padding-top:48px;border-top:1px solid var(--line)}
+.chapter.first{margin-top:0;padding-top:56px;border-top:0}
 .part + .chapter{border-top:0;padding-top:8px;margin-top:40px}
 .ch-num{display:flex;align-items:baseline;gap:12px;font-weight:700;font-size:15px;color:var(--fg-2)}
 .ch-n{font-weight:300;font-size:46px;line-height:1;color:var(--blue);font-variant-numeric:tabular-nums}
@@ -94,57 +109,52 @@ main.content{min-width:0;max-width:820px;padding-bottom:40px}
 .chapter h3{margin-top:40px;font-size:22px;line-height:1.35}
 .chapter > p,.chapter .p{margin-top:16px;max-width:38em;color:var(--fg-body)}
 .chapter > p.intro{font-size:20px;line-height:1.7;color:var(--ink)}
-.fine{font-size:15px;line-height:1.6;color:var(--fg-3)}
+.fine{font-size:15px;line-height:1.6;color:var(--fg-2)}
 .chapter > .fine{margin-top:12px}
-.bullets{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px;max-width:40em}
+.bullets{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px;max-width:40em}
 .bullets li{position:relative;padding-inline-start:22px;color:var(--fg-body)}
 .bullets li::before{content:"";position:absolute;inset-inline-start:2px;top:.72em;width:7px;height:7px;background:var(--ink);border-radius:1px}
 .callout{margin-top:28px;padding:18px 22px;border-inline-start:4px solid var(--ink);border-start-end-radius:4px;border-end-end-radius:4px;background:var(--mist);font-weight:700;font-size:20px;line-height:1.5;color:var(--ink);max-width:40em}
 .callout span{display:block;margin-top:6px;font-weight:400;font-size:17px;color:var(--fg-body)}
-.verify{display:inline-block;padding:0 7px;margin-inline-start:4px;border-radius:4px;background:transparent;box-shadow:inset 0 0 0 1px var(--blue);color:var(--blue-deep);font-weight:700;font-size:13px;line-height:1.6;white-space:nowrap;vertical-align:1px}
-.src{font-size:14px;white-space:nowrap}
-.src::before{content:"מקור: ";color:var(--fg-3)}
+.verify{display:inline-block;padding:0 7px;margin-inline-start:4px;border-radius:4px;box-shadow:inset 0 0 0 1px var(--blue);color:var(--blue-deep);font-weight:700;font-size:13px;line-height:1.6;white-space:nowrap;vertical-align:1px}
+.src{font-size:14px;white-space:nowrap;color:var(--blue-deep)}
+.src::before{content:"מקור: ";color:var(--fg-2)}
 
-/* [G] השוואה, כרטיסים ורשימות */
-.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
-.card{padding:22px 22px 20px;border:1px solid var(--line-soft);border-radius:var(--r-sm);background:var(--white)}
-.card.dark{background:var(--ink);border-color:var(--ink);color:#fff}
-.card.dark h4,.card.dark b{color:#fff}
-.card h4{font-size:19px;line-height:1.35}
-.card .k{font-weight:700;font-size:14px;color:var(--fg-3)}
-.card.dark .k{color:rgba(255,255,255,.7)}
-.card ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px;font-size:17px;line-height:1.55}
-.card li{position:relative;padding-inline-start:18px}
-.card li::before{content:"";position:absolute;inset-inline-start:0;top:.62em;width:6px;height:6px;border-radius:1px;background:currentColor;opacity:.6}
-.card.dark li{color:rgba(255,255,255,.9)}
-.card.dark a{color:#b9cbff}
-.card.dark .src::before{color:rgba(255,255,255,.7)}
-.uses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px}
-.use{padding:18px 20px;border-radius:var(--r-sm);background:var(--mist)}
-.use h4{font-size:18px}
-.use p{margin-top:6px;font-size:16px;line-height:1.6;color:var(--fg-body)}
+/* [G] תקציר המנהלים */
+.brief{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:28px}
+.q{padding:22px 22px 20px;border:1px solid var(--line-soft);border-radius:var(--r-sm);background:var(--white)}
+.q.dark{background:var(--ink);border-color:var(--ink)}
+.q.dark h3,.q.dark b{color:#fff}
+.q .k{font-weight:700;font-size:14px;color:var(--blue-deep)}
+.q.dark .k{color:var(--green)}
+.q h3{margin-top:4px;font-size:21px;line-height:1.35}
+.q p{margin-top:10px;font-size:17px;line-height:1.6;color:var(--fg-body)}
+.q ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:10px;font-size:17px;line-height:1.55;color:var(--fg-body)}
+.q.dark ul{color:rgba(255,255,255,.88)}
+.q li{position:relative;padding-inline-start:18px}
+.q li::before{content:"";position:absolute;inset-inline-start:0;top:.62em;width:6px;height:6px;border-radius:1px;background:currentColor;opacity:.6}
+.q li b{display:block}
 
 /* [H] טבלאות */
 .tbl-wrap{margin-top:22px;border:1px solid var(--line-soft);border-radius:var(--r-sm)}
 table{width:100%;border-collapse:collapse;font-size:16px;line-height:1.55}
 th,td{padding:12px 14px;text-align:right;vertical-align:top;border-bottom:1px solid var(--line-soft)}
-tr:last-child td{border-bottom:0}
+tr:last-child td,tr:last-child th{border-bottom:0}
 thead th{background:var(--mist);font-weight:700;font-size:15px;color:var(--ink);white-space:nowrap}
 tbody th{font-weight:700;color:var(--ink);white-space:nowrap}
 td{color:var(--fg-body)}
 .yes{font-weight:700;color:var(--ink)}
 .no{color:var(--fg-3)}
-.tbl-hosts{min-width:720px}
-.tbl-pay{min-width:640px}
-.tbl-sees{min-width:560px}
-.tbl-map{min-width:520px}
+.tbl-il{min-width:680px}
+.tbl-pay{min-width:600px}
+.tbl-sees{min-width:520px}
+.tbl-map{min-width:500px}
 
 /* [I] שרטוט ורצף צעדים */
-figure{margin:28px 0 0}
-.diagram{padding:24px 16px 18px;border:1px solid var(--line-soft);border-radius:var(--r-lg);background:var(--white)}
-.diagram svg{display:block;width:100%;max-width:560px;height:auto;margin:0 auto}
-figcaption{margin-top:12px;font-size:15px;color:var(--fg-3);text-align:center}
-.steps{list-style:none;margin:22px 0 0;padding:0;counter-reset:s;display:grid;gap:0;border:1px solid var(--line-soft);border-radius:var(--r-sm);overflow:hidden}
+.diagram{margin:28px 0 0;padding:24px 16px 18px;border:1px solid var(--line-soft);border-radius:var(--r-lg);background:var(--white)}
+.diagram svg{display:block;width:100%;max-width:540px;height:auto;margin:0 auto}
+.diagram figcaption{margin-top:12px;font-size:15px;color:var(--fg-2);text-align:center}
+.steps{list-style:none;margin:22px 0 0;padding:0;counter-reset:s;display:grid;border:1px solid var(--line-soft);border-radius:var(--r-sm);overflow:hidden}
 .steps li{counter-increment:s;display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;padding:14px 18px;border-top:1px solid var(--line-soft);font-size:17px;line-height:1.6;color:var(--fg-body)}
 .steps li:first-child{border-top:0}
 .steps li::before{content:counter(s);display:inline-grid;place-items:center;width:30px;height:30px;border-radius:4px;background:var(--tint);color:var(--ink);font-weight:700;font-size:15px}
@@ -154,12 +164,19 @@ figcaption{margin-top:12px;font-size:15px;color:var(--fg-3);text-align:center}
 .chain .st b{display:block;font-size:14px;color:var(--fg-3)}
 .chain .st.out{background:var(--ink);color:#fff}
 .chain .st.out b{color:rgba(255,255,255,.72)}
-.chain .st.q{background:var(--white);box-shadow:inset 0 0 0 1px var(--blue)}
+.chain .st.q2{background:var(--white);box-shadow:inset 0 0 0 1px var(--blue)}
 .chain .ar{flex:none;align-self:center;color:var(--fg-3);font-size:20px}
 
-/* [J] קוד ושאלות */
-pre{margin:22px 0 0;padding:18px 20px;border-radius:var(--r-sm);background:var(--ink);color:#e8ecf8;font-family:var(--mono);font-size:14px;line-height:1.6;direction:ltr;text-align:left;overflow-x:auto}
+/* [J] קוד, פירוט מתקפל ושאלות */
+pre{margin:16px 0 0;padding:18px 20px;border-radius:var(--r-sm);background:var(--ink);color:#e8ecf8;font-family:var(--mono);font-size:14px;line-height:1.6;direction:ltr;text-align:left;overflow-x:auto}
 pre .c{color:#a2eb9a}
+.more{margin-top:24px;border:1px solid var(--line-soft);border-radius:var(--r-sm)}
+.more > summary{display:flex;align-items:center;gap:12px;min-height:52px;padding:12px 18px;font-weight:700;font-size:17px;color:var(--ink);cursor:pointer;list-style:none}
+.more > summary::-webkit-details-marker{display:none}
+.more > summary::before{content:"+";display:inline-grid;place-items:center;flex:none;width:26px;height:26px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line);font-weight:400;font-size:19px;line-height:1}
+.more[open] > summary::before{content:"\2212"}
+.more > summary:hover{background:var(--mist)}
+.more-body{padding:0 18px 20px}
 .faq{margin-top:22px;border-top:1px solid var(--line-soft)}
 .faq details{border-bottom:1px solid var(--line-soft)}
 .faq summary{display:flex;align-items:center;gap:12px;min-height:56px;padding:12px 4px;font-weight:700;font-size:18px;color:var(--ink);cursor:pointer;list-style:none}
@@ -168,9 +185,8 @@ pre .c{color:#a2eb9a}
 .faq details[open] summary::after{transform:rotate(225deg) translateY(-3px)}
 .faq summary:hover{background:var(--mist)}
 .faq .a{padding:0 4px 20px;max-width:40em;font-size:17px;color:var(--fg-body)}
-.faq .a p + p{margin-top:10px}
 .refs{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:8px;font-size:16px}
-.refs a{overflow-wrap:anywhere}
+.refs a{white-space:nowrap}
 .refs .t{color:var(--fg-3);font-size:14px}
 
 /* [K] כותרת תחתונה */
@@ -188,28 +204,28 @@ pre .c{color:#a2eb9a}
   .toc-m summary::after{content:"+";margin-inline-start:auto;font-weight:400;font-size:22px}
   .toc-m[open] summary::after{content:"\2212"}
   .toc-m .toc{padding:0 4px 12px}
-  .hero-in{grid-template-columns:minmax(0,1fr);gap:28px;padding:40px 32px 36px}
+  .hero-in{grid-template-columns:minmax(0,1fr);gap:32px;padding:40px 32px 40px}
+  .mock{justify-self:start}
   main.content{max-width:none}
+  .chapter.first{padding-top:40px}
 }
 @media (max-width:640px){
   body{font-size:17px}
   .top-in{padding:0 16px;gap:12px}
   .logo img{height:26px}
   .top-where{display:none}
-  .hero-in{padding:32px 16px 28px}
+  .hero-in{padding:32px 16px 32px}
   .lead{font-size:19px}
-  .audience{grid-template-columns:minmax(0,1fr);gap:2px}
-  .audience b{margin-top:8px}
-  .thesis{padding:24px 20px}
-  .thesis-t{font-size:22px}
+  .mock{padding:14px 12px 16px}
   .shell{padding:0 16px}
-  .part:first-child{margin-top:44px}
   .chapter{margin-top:56px;padding-top:36px}
   .ch-n{font-size:38px}
   .chapter > p.intro{font-size:18px}
-  .duo,.uses{grid-template-columns:minmax(0,1fr)}
+  .brief{grid-template-columns:minmax(0,1fr)}
   .chain{flex-direction:column}
   .chain .st{flex:none}
+  .chain .ar{transform:rotate(-90deg)}
+  .diagram{padding:14px 2px 12px}
   pre{white-space:pre-wrap;word-break:break-word;font-size:13px;padding:16px}
   .scroll-x{overflow:visible}
   .tbl-wrap{border:0}
@@ -218,15 +234,14 @@ pre .c{color:#a2eb9a}
   table.stack thead{display:none}
   table.stack tr{margin-top:12px;border:1px solid var(--line-soft);border-radius:var(--r-sm);overflow:hidden}
   table.stack tr:first-child{margin-top:0}
-  table.stack tbody th{background:var(--mist);white-space:normal}
+  table.stack tbody th{background:var(--mist);white-space:normal;border-bottom:1px solid var(--line-soft)}
   table.stack td{border-bottom:1px solid var(--line-soft)}
   table.stack tr td:last-child{border-bottom:0}
   table.stack td[data-label]::before{content:attr(data-label);display:block;font-weight:700;font-size:13px;color:var(--fg-3)}
   table.stack code{overflow-wrap:anywhere}
-  .chain .ar{transform:rotate(-90deg)}
-  .diagram{padding:14px 2px 12px}
-  th,td{padding:10px 12px}
   .foot-in{padding:24px 16px}
+  .src{white-space:normal}
+  .refs a{white-space:normal}
 }
 </style>
 </head>
@@ -246,48 +261,45 @@ pre .c{color:#a2eb9a}
 <section class="hero" id="top">
   <div class="hero-in">
     <div>
-      <p class="eyebrow">מדריך כללי · מעודכן ל-3/11/2026</p>
-      <h1><span class="en">MCP Apps</span><span class="he">ממשק אמיתי בתוך השיחה עם סוכן ה-AI</span></h1>
-      <p class="lead">‏MCP Apps מאפשר לשירות שלכם להציג רכיב אינטראקטיבי, כמו טופס, טבלה, מפה או כפתור אישור, בתוך הצ'אט של ChatGPT, של Claude ושל מארחים נוספים. המדריך נותן למוצר, לעסק ולארכיטקטורה תמונה אחת משותפת: מה זה, מה אפשר, מה אסור, ואיך זה בנוי.</p>
-      <div class="audience">
-        <b>למנהלים ולמוצר</b><span><a href="#part-a">חלק א</a>, פרקים 1 עד 7. בלי קוד.</span>
-        <b>לארכיטקטים ולפיתוח</b><span><a href="#part-b">חלק ב</a>, פרקים 8 עד 11.</span>
-        <b>לכולם</b><span><a href="#faq">שאלות נפוצות</a>, ו<a href="#refs">מה עוד לאמת</a>.</span>
-      </div>
+      <p class="eyebrow">מדריך · מעודכן ל-3/11/2026</p>
+      <h1><span class="en">MCP Apps</span><span class="he">המסך של השירות שלכם, בתוך הצ'אט של ChatGPT ו-Claude</span></h1>
+      <p class="lead">הלקוחות כבר משוחחים עם סוכני AI.‏ <span class="nw">MCP Apps</span> מאפשר לשירות שלכם להופיע בתוך השיחה הזאת לא רק כטקסט שהמודל מנסח, אלא כמסך שלכם: לבחור, למלא ולאשר, בלי לצאת מהצ'אט.</p>
+      <p class="hero-meta">חלק א הוא תקציר לכולם, ונקרא בחמש דקות. חלק ב מיועד לארכיטקטים ולפיתוח. כל עובדה מקושרת למקור רשמי, ומה שלא אומת מסומן <span class="verify">לאמת</span>.</p>
     </div>
-    <aside class="thesis" aria-label="השורה התחתונה">
-      <p class="thesis-k">השורה התחתונה</p>
-      <p class="thesis-t">המודל מחליט מתי להציג. הרכיב קובע מה מוצג.
-        <span>טקסט בצ'אט המודל מנסח מחדש בכל פעם. נוסח, מחיר או תנאי שחייבים להופיע בדיוק כפי שנכתבו, מקומם בתוך הרכיב.</span></p>
-      <p class="thesis-meta">כל עובדה במדריך מקושרת למקור רשמי שנבדק ב-3/11/2026. מה שלא אומת מסומן <b style="color:#fff">לאמת</b>. הפלטפורמות משתנות מהר, ולכן כדאי לבדוק שוב לפני החלטה.</p>
-    </aside>
+    <figure class="mock" aria-label="הדמיה: מסך של שירות בתוך שיחה עם סוכן AI">
+      <div class="mock-bar" aria-hidden="true"><i></i><i></i><i></i><span>שיחה עם סוכן AI</span></div>
+      <p class="msg-u">צריך טכנאי למזגן השבוע. מה פנוי?</p>
+      <div class="msg-a"><span class="tag tag-m">המודל ניסח</span><br>מצאתי שלושה מועדים השבוע. אפשר לבחור ולאשר ישירות כאן:</div>
+      <div class="wdg">
+        <span class="tag tag-w">המסך שלכם</span>
+        <div class="wdg-h"><b>מועדים פנויים</b><small>שירות לדוגמה</small></div>
+        <div class="slots"><span>ב׳ 10/11<br>09:00</span><span class="on">ב׳ 10/11<br>13:00</span><span>ד׳ 12/11<br>16:00</span></div>
+        <div class="price"><span>ביקור טכנאי</span><b>250 ₪</b></div>
+        <p class="terms">כולל מע״מ. ביטול עד 24 שעות לפני הביקור, בלי עלות.</p>
+        <span class="cta">לאישור המועד</span>
+      </div>
+      <figcaption class="mock-cap">דוגמה כללית. את הטקסט מעל המסך המודל מנסח בכל פעם מחדש. המועדים, המחיר והתנאים מוצגים בדיוק כפי שהשירות כתב אותם.</figcaption>
+    </figure>
   </div>
 </section>
 
 <div class="shell">
   <nav class="side" aria-label="תוכן העניינים">
     <div class="toc" id="toc">
-      <p class="toc-k">חלק א · התמונה העסקית</p>
+      <p class="toc-k">חלק א · בקצרה</p>
       <ol>
-        <li><a href="#what"><span class="n">1</span>מה זה</a></li>
-        <li><a href="#why"><span class="n">2</span>טקסט מול רכיב</a></li>
-        <li><a href="#can"><span class="n">3</span>מה אפשר ומה לא</a></li>
-        <li><a href="#where"><span class="n">4</span>איפה זה עובד היום</a></li>
-        <li><a href="#policy"><span class="n">5</span>מגבלות מדיניות</a></li>
-        <li><a href="#pay"><span class="n">6</span>תשלומים</a></li>
-        <li><a href="#uses"><span class="n">7</span>דוגמאות שימוש</a></li>
+        <li><a href="#brief"><span class="n">1</span>מה, למה ומתי</a></li>
+        <li><a href="#israel"><span class="n">2</span>מה זמין בישראל</a></li>
+        <li><a href="#limits"><span class="n">3</span>הגבולות</a></li>
+        <li><a href="#pay"><span class="n">4</span>תשלומים</a></li>
       </ol>
       <p class="toc-k">חלק ב · איך זה בנוי</p>
       <ol>
-        <li><a href="#arch"><span class="n">8</span>הרכיבים והזרימה</a></li>
-        <li><a href="#sees"><span class="n">9</span>מה המודל רואה</a></li>
-        <li><a href="#build"><span class="n">10</span>מה זה דורש מהפיתוח</a></li>
-        <li><a href="#code"><span class="n">11</span>איך זה נראה בקוד</a></li>
-      </ol>
-      <p class="toc-k">ולסיום</p>
-      <ol>
-        <li><a href="#faq"><span class="n">12</span>שאלות נפוצות</a></li>
-        <li><a href="#refs"><span class="n">13</span>מקורות ומה לאמת</a></li>
+        <li><a href="#arch"><span class="n">5</span>הזרימה</a></li>
+        <li><a href="#sees"><span class="n">6</span>מה המודל רואה</a></li>
+        <li><a href="#build"><span class="n">7</span>מה צריך לבנות</a></li>
+        <li><a href="#faq"><span class="n">8</span>שאלות נפוצות</a></li>
+        <li><a href="#refs"><span class="n">9</span>מקורות ומה לאמת</a></li>
       </ol>
     </div>
   </nav>
@@ -296,348 +308,249 @@ pre .c{color:#a2eb9a}
     <details class="toc-m"><summary>תוכן העניינים</summary><div class="toc" id="tocM"></div></details>
 
     <!-- ============ חלק א ============ -->
-    <div class="part" id="part-a">
-      <p class="part-k">חלק א</p>
-      <h2>התמונה העסקית</h2>
-      <p>מה הטכנולוגיה עושה, למה היא מעניינת, ואיפה הגבולות שלה. בלי קוד.</p>
-    </div>
-
-    <section class="chapter" id="what" data-title="מה זה">
-      <p class="ch-num"><span class="ch-n">1</span>מה זה</p>
-      <h2>‏MCP מחבר את הסוכן לשירות. MCP Apps נותן לשירות פנים.</h2>
-      <p class="intro">‏<b>MCP</b> <span class="en">(Model Context Protocol)</span> הוא תקן פתוח לחיבור אפליקציות AI למערכות חיצוניות. שרת MCP חושף לסוכן שלושה סוגי יכולות: כלים שהמודל יכול להפעיל, משאבים של מידע, ותבניות של הנחיות. <a class="src" href="https://modelcontextprotocol.io/docs/getting-started/intro">modelcontextprotocol.io</a></p>
-      <p>עד לאחרונה, כל מה ששרת כזה החזיר היה טקסט ונתונים. המודל קרא אותם וניסח מהם תשובה. <b>MCP Apps</b> מוסיף שכבת ממשק: השרת יכול להחזיר גם רכיב HTML, והמארח מציג אותו בתוך השיחה. המשתמש לוחץ, בוחר וממלא, בלי לצאת מהצ'אט.</p>
-      <ul class="bullets">
-        <li>‏MCP הוצג על ידי Anthropic בסוף 2024. בדצמבר 2025 הוא נתרם ל-Agentic AI Foundation, קרן תחת ה-Linux Foundation שהקימו Anthropic, ‏Block ו-OpenAI. <a class="src" href="https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation">anthropic.com</a></li>
-        <li>‏MCP Apps פורסם ב-26/1/2026 כ<b>הרחבה הרשמית הראשונה</b> של MCP. כבר ביום הפרסום הוא עבד ב-Claude, ב-Goose וב-VS Code Insiders, ו-ChatGPT הצטרף באותו שבוע. <a class="src" href="https://blog.modelcontextprotocol.io/posts/2026-01-26-mcp-apps/">blog.modelcontextprotocol.io</a></li>
-        <li>זה תקן אחד: אותו רכיב אמור לעבוד בכל מארח שתומך בו. בפועל יש הבדלים קטנים בין המארחים, והם מפורטים בפרק 10.</li>
-      </ul>
-      <p class="fine">מונחים: <b>מארח</b> (host) הוא האפליקציה שבה המשתמש משוחח, למשל ChatGPT או Claude. <b>רכיב</b> (View, ובשפת OpenAI ‏widget) הוא ה-HTML שהשרת שלכם מספק. ב-OpenAI קוראים היום לאפליקציות האלה plugins.</p>
-    </section>
-
-    <section class="chapter" id="why" data-title="טקסט מול רכיב">
-      <p class="ch-num"><span class="ch-n">2</span>למה זה חשוב</p>
-      <h2>טקסט שהמודל מנסח מחדש, מול רכיב שבו הנוסח שלכם</h2>
-      <p class="intro">זה ההבדל העסקי המרכזי. בלי רכיב, כל מה שהשירות מחזיר עובר דרך המודל, והמודל כותב אותו מחדש במילים שלו.</p>
-      <div class="duo">
-        <div class="card">
-          <p class="k">בלי רכיב</p>
-          <h4>תשובה בטקסט</h4>
+    <section class="chapter first" id="brief" data-title="מה, למה ומתי">
+      <p class="ch-num"><span class="ch-n">1</span>תקציר</p>
+      <h2>מה זה, מה זה נותן, ומתי זה נכון</h2>
+      <div class="brief">
+        <div class="q">
+          <p class="k">מה זה</p>
+          <h3>שכבת ממשק מעל MCP</h3>
+          <p>סוכן AI מתחבר למערכות של ארגון דרך שרת MCP, ומקבל ממנו נתונים ופעולות. <span class="nw">MCP Apps</span> הוא תקן פתוח שמאפשר לאותו שרת להחזיר גם מסך. ‏ChatGPT, ‏Claude ומארחים נוספים מציגים את המסך בתוך השיחה, והמשתמש עובד בו ישירות.</p>
+        </div>
+        <div class="q dark">
+          <p class="k">מה זה נותן</p>
+          <h3>שליטה במה שהלקוח רואה</h3>
           <ul>
-            <li>המודל מנסח את התשובה מחדש בכל פעם. הוא יכול לקצר, להשמיט, לסדר מחדש או לתרגם.</li>
-            <li>אין שדה בתקן שמחייב את המארח להציג טקסט מילה במילה. <a class="src" href="https://developers.openai.com/apps-sdk/reference">developers.openai.com</a></li>
-            <li>כל פעולה של המשתמש היא הודעה חדשה בצ'אט, וסבב נוסף דרך המודל.</li>
+            <li><b>נוסח מדויק.</b>מחיר, תנאים ואישורים מוצגים כפי שכתבתם. טקסט רגיל המודל מנסח מחדש.</li>
+            <li><b>פעולה, לא רק שיחה.</b>בחירה, טופס ואישור בלחיצה, במקום הלוך ושוב בצ'אט.</li>
+            <li><b>להיות איפה שהלקוחות כבר נמצאים.</b>פיתוח אחד עובד בכמה מארחים.</li>
           </ul>
         </div>
-        <div class="card dark">
-          <p class="k">עם רכיב</p>
-          <h4>ממשק שאתם כתבתם</h4>
+        <div class="q">
+          <p class="k">מתי נכון</p>
+          <h3>כשיש מה לבחור, למלא או לאשר</h3>
           <ul>
-            <li>ה-HTML, הנוסח, המספרים והכפתורים מוצגים כפי שבניתם אותם.</li>
-            <li>המשתמש לוחץ ובוחר בתוך הרכיב, והרכיב יכול לפנות לשרת שלכם בלי לנסח הודעה דרך המודל.</li>
-            <li>חוויה עקבית ומזוהה, גם כשהמודל משתנה.</li>
+            <li>בחירה בין כמה אפשרויות, מועדים או מסלולים.</li>
+            <li>טופס, או תהליך של כמה צעדים.</li>
+            <li>מחיר, תנאים או הצהרה שחייבים להופיע בנוסח מדויק.</li>
+            <li>סטטוס ונתונים אישיים, אחרי שהמשתמש מתחבר לחשבון.</li>
+          </ul>
+        </div>
+        <div class="q">
+          <p class="k">מתי לא</p>
+          <h3>כשטקסט מספיק, או כשהמדיניות חוסמת</h3>
+          <ul>
+            <li>שאלה ותשובה כללית. המודל עושה את זה טוב בלי מסך.</li>
+            <li>תשלום בתוך הצ'אט. התשלום עובר לאתר שלכם (פרק 4).</li>
+            <li>מידע רפואי, פרטי אשראי או מספר זהות. ב-ChatGPT אסור לאסוף אותם.</li>
+            <li>חוויה שחייבת להיות בשליטה מלאה מקצה לקצה. המארח מחליט מתי להציג את המסך, ואיך.</li>
           </ul>
         </div>
       </div>
-      <div class="callout">המודל עדיין כותב טקסט לפני הרכיב ואחריו.
-        <span>הוא יכול לסכם את מה שמוצג ברכיב במילים שלו. לכן נוסח מחייב, כמו תנאים, מחיר או הצהרה, צריך להופיע בתוך הרכיב עצמו, ולא רק בטקסט שהמודל מקבל.</span></div>
+      <div class="callout">המודל מחליט מתי להציג את המסך. המסך קובע מה מוצג.
+        <span>זה ההבדל בין תשובה של המודל לבין חוויה של השירות שלכם.</span></div>
     </section>
 
-    <section class="chapter" id="can" data-title="מה אפשר ומה לא">
-      <p class="ch-num"><span class="ch-n">3</span>מה אפשר ומה אי אפשר</p>
-      <h2>הגבולות, בשתי עמודות</h2>
-      <div class="duo">
-        <div class="card">
-          <p class="k">אפשר</p>
-          <h4>מה רכיב יודע לעשות</h4>
-          <ul>
-            <li>להציג טפסים, טבלאות, גרפים, מפות וכרטיסי מוצר.</li>
-            <li>לקבל בחירה, לחיצה או קלט מהמשתמש.</li>
-            <li>להפעיל כלים בשרת שלכם, דרך המארח.</li>
-            <li>לשלוח הודעה לשיחה, ולעדכן את ההקשר שהמודל רואה.</li>
-            <li>לפתוח קישור חיצוני, בדרך כלל אחרי אישור של המשתמש.</li>
-            <li>לעבור למסך מלא או לחלון צף (picture in picture).</li>
-          </ul>
-          <p class="fine" style="margin-top:12px"><a href="https://github.com/modelcontextprotocol/ext-apps/blob/main/specification/2026-01-26/apps.mdx">מפרט MCP Apps</a></p>
-        </div>
-        <div class="card">
-          <p class="k">אי אפשר</p>
-          <h4>מה נשאר בידי המארח והמודל</h4>
-          <ul>
-            <li>לחייב את המודל לקרוא לכלי שלכם. המודל מחליט מתי, לפי השיחה.</li>
-            <li>לשלוט במה שהמודל כותב בצ'אט מסביב לרכיב.</li>
-            <li>לקרוא את היסטוריית השיחה. ב-ChatGPT וב-Claude זה אסור במפורש.</li>
-            <li>לפנות לכל דומיין ברשת. כל דומיין חיצוני מוצהר מראש ב-CSP.</li>
-            <li>להיראות אותו דבר בכל מקום. המארח קובע גבולות, גובה והתנהגות בטלפון.</li>
-            <li>לגבות תשלום בתוך הרכיב ב-ChatGPT. על זה בפרק 6.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="chapter" id="where" data-title="איפה זה עובד היום">
-      <p class="ch-num"><span class="ch-n">4</span>איפה זה עובד היום</p>
-      <h2>המארחים, התוכניות והמכשירים</h2>
-      <p class="intro">התמיכה מתרחבת כל חודש. הטבלה משקפת את מה שפורסם עד 3/11/2026.</p>
+    <section class="chapter" id="israel" data-title="מה זמין בישראל">
+      <p class="ch-num"><span class="ch-n">2</span>זמינות</p>
+      <h2>מה זמין למשתמשים בישראל</h2>
+      <p class="intro">‏ChatGPT ו-Claude זמינים בישראל, ושניהם מציגים מסכים כאלה. המצב לפי מה שפורסם עד 3/11/2026.</p>
       <div class="tbl-wrap scroll-x">
-        <table class="tbl-hosts">
-          <thead><tr><th>מארח</th><th>מי יכול להשתמש</th><th>מכשירים</th><th>הערות</th></tr></thead>
+        <table class="tbl-il">
+          <thead><tr><th>מארח</th><th>בישראל</th><th>תוכניות</th><th>בטלפון</th></tr></thead>
           <tbody>
-            <tr><th>Claude</th>
-              <td>כל התוכניות: Free, ‏Pro, ‏Max, ‏Ultra, ‏Team ו-Enterprise. <a class="src" href="https://claude.com/blog/interactive-tools-in-claude">claude.com</a></td>
-              <td>אתר, אפליקציית מחשב, iOS ו-Android, וגם Cowork. <a class="src" href="https://support.claude.com/en/articles/13454812-use-interactive-connectors-in-claude">support.claude.com</a></td>
-              <td>מחבר מותאם אישית זמין בכל התוכניות. ב-Free מחבר אחד בלבד. ב-Team וב-Enterprise הבעלים יכולים לכבות רכיבים. <a class="src" href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp">support.claude.com</a></td></tr>
             <tr><th>ChatGPT</th>
-              <td>בהשקה (6/10/2025): כל המשתמשים המחוברים בתוכניות Free, ‏Go, ‏Plus ו-Pro, מחוץ ל-EEA, לשוויץ ולבריטניה. <a class="src" href="https://openai.com/index/introducing-apps-in-chatgpt/">openai.com</a> המצב היום, כולל אירופה ותוכניות Business ו-Enterprise: <span class="verify">לאמת</span></td>
-              <td>אתר ואפליקציות. בטלפון, חלון צף עשוי להיפתח כמסך מלא. <a class="src" href="https://developers.openai.com/apps-sdk/reference">developers.openai.com</a> רשימת המכשירים המלאה: <span class="verify">לאמת</span></td>
-              <td>חיבור שרת פרטי לבדיקות (Developer mode): התוכניות והמכשירים <span class="verify">לאמת</span>. אפליקציה ציבורית עוברת הגשה וסקירה.</td></tr>
+              <td class="yes">זמין. ישראל ברשימת המדינות הנתמכות, ולא הייתה בין האזורים שהוחרגו בהשקה. <a class="src" href="https://help.openai.com/en/articles/7947663-chatgpt-supported-countries">OpenAI</a></td>
+              <td>בהשקה: Free, ‏Go, ‏Plus ו-Pro. <a class="src" href="https://openai.com/index/introducing-apps-in-chatgpt/">OpenAI</a> ב-Business ו-Enterprise, לפי הגדרות המנהל. החלוקה המדויקת היום <span class="verify">לאמת</span></td>
+              <td>אפליקציות iOS ו-Android. חלון צף עשוי להיפתח כמסך מלא.</td></tr>
+            <tr><th>Claude</th>
+              <td class="yes">זמין. ישראל ברשימת האזורים הנתמכים. <a class="src" href="https://www.anthropic.com/supported-countries">Anthropic</a></td>
+              <td>כל התוכניות: Free, ‏Pro, ‏Max, ‏Ultra, ‏Team ו-Enterprise. ב-Free, מחבר מותאם אחד. <a class="src" href="https://claude.com/blog/interactive-tools-in-claude">Claude</a></td>
+              <td>iOS ו-Android. בלי מצלמה, מיקרופון ומיקום. מחבר מוסיפים קודם באתר או במחשב. <a class="src" href="https://claude.com/docs/connectors/building/mcp-apps/design-guidelines">Claude</a></td></tr>
             <tr><th>Gemini Enterprise</th>
-              <td>לקוחות Gemini Enterprise. התמיכה תוארה בפוסט של Google Cloud מ-20/10/2026. <a class="src" href="https://cloud.google.com/blog/topics/developers-practitioners/devs-guide-to-mcp-apps-in-gemini">cloud.google.com</a></td>
-              <td>הרכיב מוצג בתוך השיחה, ויכול להתרחב למסך מלא או לחלונית צד.</td>
-              <td>השרת מחובר כ-custom MCP data store. שלב הזמינות (Preview או GA) לא צוין: <span class="verify">לאמת</span>. באפליקציית Gemini לצרכנים, פלטפורמת Connected Apps נמצאת ב-Preview. <a class="src" href="https://developers.google.com/connected-apps/connected-apps-policy">developers.google.com</a></td></tr>
-            <tr><th>VS Code</th>
-              <td>משתמשי GitHub Copilot, מגרסה 1.109 (4/2/2026). <a class="src" href="https://code.visualstudio.com/updates/v1_109">code.visualstudio.com</a></td>
-              <td>מחשב</td>
-              <td>מתאים לכלים פנימיים ולצוותי פיתוח.</td></tr>
+              <td>תומך במסכים מאוקטובר 2026. <a class="src" href="https://cloud.google.com/blog/topics/developers-practitioners/devs-guide-to-mcp-apps-in-gemini">Google</a> רכישה בישראל <span class="verify">לאמת</span>. אין אחסון נתונים בישראל, רק global, ארה"ב ואירופה. <a class="src" href="https://docs.cloud.google.com/gemini/enterprise/docs/locations">Google</a></td>
+              <td>ארגונים, ברישיון Gemini Enterprise</td>
+              <td><span class="verify">לאמת</span></td></tr>
             <tr><th>Microsoft 365 Copilot</th>
-              <td>דרך declarative agents. <a class="src" href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/plugin-mcp-apps">learn.microsoft.com</a></td>
-              <td><span class="verify">לאמת</span></td>
-              <td>תומך גם ב-MCP Apps וגם ב-Apps SDK של OpenAI. הזדהות ב-OAuth 2.1 או ב-Entra SSO.</td></tr>
-            <tr><th>עוד</th>
-              <td colspan="3">‏Cursor, ‏Postman, ‏MCPJam, ‏Glean ועוד, לפי טבלת התמיכה שהקהילה מתחזקת. ב-Goose התמיכה ניסיונית. <a class="src" href="https://modelcontextprotocol.io/extensions/client-matrix">modelcontextprotocol.io</a></td></tr>
+              <td>זמין לארגונים בישראל, עם אפשרות לאחסון נתונים בישראל. <a class="src" href="https://learn.microsoft.com/en-us/microsoft-365/enterprise/advanced-data-residency">Microsoft</a></td>
+              <td>ארגונים, דרך declarative agents. <a class="src" href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/plugin-mcp-apps">Microsoft</a></td>
+              <td><span class="verify">לאמת</span></td></tr>
+            <tr><th>אפליקציית Gemini</th>
+              <td>פלטפורמת Connected Apps ב-Preview, נפתחת בשלבים ובלי רשימת מדינות. ישראל לא הוזכרה. <a class="src" href="https://developers.google.com/connected-apps">Google</a></td>
+              <td>טרם ידוע</td>
+              <td>טרם ידוע</td></tr>
           </tbody>
         </table>
       </div>
-      <h3>בטלפון זה לא אותו דבר</h3>
-      <ul class="bullets">
-        <li>ב-Claude לטלפון הרכיב רץ ב-WebView של המערכת ולא ב-iframe, בלי גישה למצלמה, למיקרופון ולמיקום. מחבר צריך להתווסף קודם באתר או במחשב, ורק אז הוא מופיע בטלפון. <a class="src" href="https://claude.com/docs/connectors/building/mcp-apps/design-guidelines">claude.com</a></li>
-        <li>בטלפון הרכיב תופס את כל הרוחב, וגובה הכרטיס בתוך השיחה מוגבל. במסך מלא, שורת ההקלדה מכסה חלק מהרכיב. מעצבים לטלפון קודם.</li>
-      </ul>
+      <p class="fine">‏<span class="nw">MCP Apps</span> נתמך גם ב-VS Code עם GitHub Copilot, ב-Cursor, ב-Postman ובמארחים נוספים. <a href="https://modelcontextprotocol.io/extensions/client-matrix">טבלת התמיכה המלאה</a>.</p>
     </section>
 
-    <section class="chapter" id="policy" data-title="מגבלות מדיניות">
-      <p class="ch-num"><span class="ch-n">5</span>מגבלות מדיניות</p>
-      <h2>מה כל ארגון צריך לדעת לפני שמתחילים</h2>
-      <p class="intro">כל מארח מפרסם הנחיות משלו, ואפליקציה שלא עומדת בהן לא תעבור סקירה. אלה הכללים שהכי משפיעים על תכנון מוצר.</p>
-      <h3>מידע רגיש</h3>
-      <p>ההנחיות של OpenAI מגדירות "מידע מוגבל" שאסור לאסוף, לבקש או לעבד: נתוני כרטיסי אשראי (PCI DSS), מידע רפואי מוגן (PHI), מזהים ממשלתיים, וסיסמאות, קודי אימות ומפתחות API. <a class="src" href="https://developers.openai.com/apps-sdk/app-submission-guidelines">developers.openai.com</a></p>
-      <p>‏<code>_meta</code> מוסתר מהמודל, אבל OpenAI כותבת במפורש שהוא לא תחליף להרשאות או לאחסון מאובטח. <a class="src" href="https://developers.openai.com/apps-sdk/build/mcp-server">developers.openai.com</a></p>
-      <h3>אסור לכוון את המודל</h3>
+    <section class="chapter" id="limits" data-title="הגבולות">
+      <p class="ch-num"><span class="ch-n">3</span>הגבולות</p>
+      <h2>חמישה דברים שכדאי לדעת לפני שמתכננים</h2>
       <ul class="bullets">
-        <li>תיאורי כלים ושדות שהמודל קורא לא יכולים להורות לו להעדיף את האפליקציה שלכם על פני אחרות, או לעקוף את ההנחיות של הפלטפורמה. <a class="src" href="https://developers.openai.com/apps-sdk/app-submission-guidelines">OpenAI</a></li>
-        <li>ב-Claude, תיאור שמקדם מוצרים או שירותים, או שמנסה לעקוף את הוראות המערכת, נדחה בסקירה. <a class="src" href="https://claude.com/docs/connectors/building/review-criteria">claude.com</a></li>
-      </ul>
-      <h3>היסטוריית השיחה, פרסום ופעולות כספיות</h3>
-      <ul class="bullets">
-        <li>השרת לא יכול למשוך, לשחזר או להסיק את כל השיחה. <a class="src" href="https://developers.openai.com/apps-sdk/app-submission-guidelines">OpenAI</a> וב-Claude אין גישה לזיכרון או להיסטוריה. <a class="src" href="https://claude.com/docs/connectors/building/review-criteria">Claude</a></li>
-        <li>פרסומות אסורות בשתי הפלטפורמות.</li>
-        <li>ב-Claude, מחבר שמעביר כסף, קריפטו או נכסים פיננסיים לא מתקבל לספרייה. <a class="src" href="https://claude.com/docs/connectors/building/review-criteria">claude.com</a> ב-ChatGPT אסורות העברות כספים, העברות קריפטו ומסחר בניירות ערך. <a class="src" href="https://developers.openai.com/apps-sdk/app-submission-guidelines">OpenAI</a></li>
-        <li>ב-Claude, כל כלי שמשנה מידע מסומן <code>destructiveHint</code>, והמארח מבקש אישור מהמשתמש לפני כל הפעלה. <a class="src" href="https://claude.com/docs/connectors/building/review-criteria">claude.com</a></li>
+        <li><b>המודל מחליט מתי.</b> אי אפשר לחייב את המודל להציג את המסך. תיאור כלי שמנסה לכוון את המודל להעדיף אתכם אסור, ונדחה בסקירה. <a class="src" href="https://developers.openai.com/apps-sdk/app-submission-guidelines">OpenAI</a> <a class="src" href="https://claude.com/docs/connectors/building/review-criteria">Claude</a></li>
+        <li><b>מחוץ למסך, המודל מנסח.</b> אין שדה שמחייב את המארח להציג טקסט מילה במילה. מה שחייב להיות מדויק, מקומו בתוך המסך. <a class="src" href="https://developers.openai.com/apps-sdk/reference">OpenAI</a></li>
+        <li><b>מידע רגיש.</b> ב-ChatGPT אסור לאסוף, לבקש או לעבד פרטי כרטיס אשראי, מידע רפואי מוגן, מזהים ממשלתיים וסיסמאות. <a class="src" href="https://developers.openai.com/apps-sdk/app-submission-guidelines">OpenAI</a></li>
+        <li><b>אין גישה לשיחה.</b> השרת לא יכול לקרוא את היסטוריית השיחה, ולא את הזיכרון של המשתמש. <a class="src" href="https://claude.com/docs/connectors/building/review-criteria">Claude</a></li>
+        <li><b>כל חנות בנפרד.</b> אפליקציה ציבורית עוברת סקירה ב-ChatGPT וב-Claude, כל אחת לפי ההנחיות שלה. פרסומות אסורות בשתיהן.</li>
       </ul>
     </section>
 
     <section class="chapter" id="pay" data-title="תשלומים">
-      <p class="ch-num"><span class="ch-n">6</span>תשלומים</p>
-      <h2>איפה הכסף עובר, ואיפה לא</h2>
-      <p class="intro">תשלום הוא המקום שבו ההנחיות הכי מחמירות, והמצב בו השתנה כמה פעמים במהלך 2026. ברירת המחדל היום: <b>מציגים בשיחה, ומשלמים באתר שלכם.</b></p>
-
-      <h3>מה ההנחיות של OpenAI אומרות</h3>
+      <p class="ch-num"><span class="ch-n">4</span>תשלומים</p>
+      <h2>מציגים בשיחה, משלמים באתר שלכם</h2>
+      <p class="intro">זה התחום שבו ההנחיות הכי מחמירות, והוא השתנה כמה פעמים במהלך 2026.</p>
+      <h3>מה ההנחיות של OpenAI קובעות</h3>
       <ul class="bullets">
-        <li>כרגע מותר לנהל מסחר רק במוצרים פיזיים.</li>
-        <li>אסור למכור מוצרים או שירותים דיגיטליים, כולל מנויים, תוכן דיגיטלי, טוקנים או קרדיטים. מותר לאפשר כניסה לחשבון בתשלום שכבר קיים, אבל לא להציג תוכניות מנוי, לפתוח מנוי חדש או לקדם שדרוג.</li>
-        <li>התשלום מתבצע ב-checkout חיצוני, בדומיין שלכם. אסור לשבץ או לארח פתרון checkout של צד שלישי בתוך הרכיב.</li>
-        <li>נתוני כרטיס אשראי (PCI DSS) הם מידע מוגבל, ואסור לאסוף אותם.</li>
-        <li>אסור לגבות מחיר או עמלה שקיימים רק ב-ChatGPT.</li>
+        <li>כרגע מותר מסחר רק במוצרים פיזיים.</li>
+        <li>אסור למכור מוצרים או שירותים דיגיטליים, כולל מנויים, תוכן דיגיטלי, טוקנים או קרדיטים. מותר לאפשר כניסה לחשבון בתשלום שכבר קיים, אבל לא להציג מסלולי מנוי, לפתוח מנוי או לקדם שדרוג.</li>
+        <li>התשלום מתבצע ב-checkout חיצוני, בדומיין שלכם. אסור לשבץ או לארח checkout של צד שלישי בתוך המסך, ואסור לאסוף פרטי כרטיס.</li>
       </ul>
-      <p class="fine">כל הסעיפים: <a href="https://developers.openai.com/apps-sdk/app-submission-guidelines">הנחיות ההגשה של OpenAI</a>.</p>
-
-      <h3>ה-checkout החיצוני, צעד אחר צעד</h3>
+      <p class="fine">המקור: <a href="https://developers.openai.com/apps-sdk/app-submission-guidelines">הנחיות ההגשה של OpenAI</a>.</p>
+      <h3>הדרך המקובלת</h3>
       <div class="chain" role="list">
-        <div class="st" role="listitem"><b>בשיחה</b>הרכיב מציג את ההצעה ואת כפתור הרכישה</div>
+        <div class="st" role="listitem"><b>בשיחה</b>המסך מציג את ההצעה, את המחיר ואת כפתור הרכישה</div>
         <span class="ar" aria-hidden="true">←</span>
-        <div class="st" role="listitem"><b>יציאה</b>הרכיב פותח קישור לאתר שלכם, ב-<code>openExternal</code> או ב-<code>ui/open-link</code></div>
+        <div class="st" role="listitem"><b>יציאה</b>המסך פותח קישור לאתר שלכם, באישור המשתמש</div>
         <span class="ar" aria-hidden="true">←</span>
-        <div class="st out" role="listitem"><b>באתר שלכם</b>תשלום, חיוב, מס, החזרים ורגולציה, כולם אצלכם</div>
+        <div class="st out" role="listitem"><b>באתר שלכם</b>תשלום, חשבונית, החזרים ורגולציה</div>
         <span class="ar" aria-hidden="true">←</span>
-        <div class="st q" role="listitem"><b>חזרה לשיחה</b>המשתמש חוזר עם אישור הזמנה. המנגנון לא מתועד במלואו: <span class="verify">לאמת</span></div>
+        <div class="st q2" role="listitem"><b>חזרה לשיחה</b>המשתמש חוזר עם אישור. המנגנון לא מתועד במלואו <span class="verify">לאמת</span></div>
       </div>
+      <h3>מה קיים בתוך המארחים</h3>
       <ul class="bullets">
-        <li>ב-ChatGPT, כל דומיין יעד מוצהר מראש ב-<code>redirect_domains</code>. ליעדים מאושרים ChatGPT מוסיף לקישור פרמטר <code>redirectUrl</code>, ואפשר לבטל את זה. <a class="src" href="https://developers.openai.com/apps-sdk/reference">developers.openai.com</a></li>
-        <li>‏OpenAI כותבת רק שהמשתמש יכול לחזור ל-ChatGPT עם אישור הזמנה או פרטי משלוח. מה בדיוק מכיל <code>redirectUrl</code>, ואיך השיחה יודעת שהתשלום הושלם, לא מתועד. <a class="src" href="https://developers.openai.com/apps-sdk/build/monetization">developers.openai.com</a></li>
-        <li>ב-Claude, פתיחת קישור מציגה למשתמש בקשת אישור, והקישור נפתח בלשונית חדשה. מחבר מהספרייה יכול לאשר מראש דומיינים שבבעלותו. המארח לא מדווח לרכיב אם הלשונית באמת נפתחה, ומנגנון חזרה לשיחה לא מתועד. <a class="src" href="https://claude.com/docs/connectors/building/mcp-apps/external-links">claude.com</a></li>
+        <li><b>‏ChatGPT.</b> יש מסך תשלום של ChatGPT בתוך אפליקציה (<code>requestCheckout</code>), ב-private beta ול"marketplaces נבחרים" בלבד. הוא נשען על Agentic Commerce Protocol ‏(ACP) של OpenAI ו-Stripe. <a class="src" href="https://developers.openai.com/apps-sdk/build/monetization">OpenAI</a></li>
+        <li><b>‏Claude.</b> אין יכולת תשלום מובנית. מחבר שמעביר כסף או נכסים פיננסיים לא מתקבל לספרייה. <a class="src" href="https://claude.com/docs/connectors/building/review-criteria">Claude</a></li>
+        <li><b>‏Google.</b> פרוטוקולים משלה: UCP ל-checkout בחיפוש ובאפליקציית Gemini, ו-AP2 להרשאות תשלום של סוכנים. לא מצאנו תשלום בתוך <span class="nw">MCP Apps</span> ב-Gemini. <a class="src" href="https://blog.google/products/ads-commerce/agentic-commerce-ai-tools-protocol-retailers-platforms/">Google</a></li>
       </ul>
-
-      <h3>תשלום בתוך המארח: מה קיים</h3>
-      <ul class="bullets">
-        <li><b>‏Instant Checkout ו-ACP.</b> ‏OpenAI השיקה ב-29/9/2025, יחד עם Stripe, רכישה בתוך ChatGPT ממוכרים נבחרים (בהתחלה Etsy בארה"ב, ואחר כך סוחרי Shopify), על בסיס Agentic Commerce Protocol, תקן פתוח. <a class="src" href="https://agenticcommerce.dev">agenticcommerce.dev</a> במרץ 2026 דווח ש-OpenAI מעבירה את Instant Checkout לתוך האפליקציות. <a class="src" href="https://www.cnbc.com/2026/03/20/open-ai-agentic-shopping-etsy-shopify-walmart-amazon.html">CNBC</a> התאריך המדויק: <span class="verify">לאמת</span></li>
-        <li><b>‏checkout של ChatGPT בתוך אפליקציה.</b> קיים ממשק <code>requestCheckout</code> שפותח מסך תשלום של המארח. מסך התשלום של ChatGPT נמצא ב-private beta ומוגבל ל"marketplaces נבחרים". יש גם מסלול שמציג רק אמצעי תשלום שכבר שמורים, בלי לאסוף פרטי כרטיס חדשים. התנאים לזכאות לא מפורסמים: <span class="verify">לאמת</span> <a class="src" href="https://developers.openai.com/apps-sdk/build/monetization">developers.openai.com</a></li>
-        <li><b>‏Claude.</b> לא מצאנו יכולת תשלום מובנית למחברים או לרכיבים. ההנחיות לא מאפשרות תוכנה שמבצעת עסקאות פיננסיות בשם המשתמש באופן אוטונומי, בלי אדם בלולאה. <a class="src" href="https://support.claude.com/en/articles/13145358">support.claude.com</a></li>
-        <li><b>‏Google.</b> ‏Universal Commerce Protocol ‏(UCP) פורסם ב-11/1/2026, יחד עם Shopify, ‏Etsy, ‏Wayfair, ‏Target ו-Walmart. הוא מאפשר checkout ב-AI Mode בחיפוש ובאפליקציית Gemini, עם Google Pay, והקמעונאי הוא המוכר. <a class="src" href="https://blog.google/products/ads-commerce/agentic-commerce-ai-tools-protocol-retailers-platforms/">blog.google</a> ‏Agent Payments Protocol ‏(AP2) פורסם ב-16/9/2025: הרשאות תשלום חתומות קריפטוגרפית, כהרחבה של A2A ושל MCP. <a class="src" href="https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol">cloud.google.com</a> תשלום בתוך רכיב MCP Apps ב-Gemini: לא מצאנו מקור.</li>
-        <li><b>עוד פרוטוקולים.</b> ‏Visa Trusted Agent Protocol <a class="src" href="https://investor.visa.com/news/news-details/2025/Visa-Introduces-Trusted-Agent-Protocol-An-Ecosystem-Led-Framework-for-AI-Commerce/default.aspx">visa.com</a>, ‏Mastercard Agent Pay <a class="src" href="https://www.mastercard.com/global/en/news-and-trends/press/2025/april/mastercard-unveils-agent-pay-pioneering-agentic-payments-technology-to-power-commerce-in-the-age-of-ai.html">mastercard.com</a>, ו-x402 לתשלומים לפי בקשה, שעבר לקרן תחת ה-Linux Foundation. <a class="src" href="https://x402.org/linux-foundation-announces-operational-launch-of-x402-foundation-to-standardize-internet-native-payments-for-ai-agents-and-applications/">x402.org</a></li>
-      </ul>
-
-      <h3>בטבלה אחת</h3>
       <div class="tbl-wrap scroll-x">
         <table class="tbl-pay">
-          <thead><tr><th>מה רוצים לעשות</th><th>ChatGPT</th><th>Claude</th><th>החלופה המקובלת</th></tr></thead>
+          <thead><tr><th>מה רוצים לעשות</th><th>ChatGPT</th><th>Claude</th><th>החלופה</th></tr></thead>
           <tbody>
-            <tr><th>טופס כרטיס אשראי ברכיב</th><td class="no">אסור. PCI הוא מידע מוגבל</td><td class="no">אין יכולת מובנית</td><td>קישור לעמוד תשלום בדומיין שלכם</td></tr>
-            <tr><th>‏checkout של צד שלישי ברכיב</th><td class="no">אסור</td><td class="no">לא מתועד</td><td>‏checkout חיצוני</td></tr>
-            <tr><th>מכירת מוצר פיזי</th><td class="yes">מותר, עם checkout חיצוני</td><td>לא נמצא איסור. בכפוף לסקירה</td><td>‏checkout חיצוני, או תשלום של המארח למי שזכאי</td></tr>
-            <tr><th>מכירת מנוי או שירות דיגיטלי</th><td class="no">אסור</td><td>לא נמצא כלל ייעודי <span class="verify">לאמת</span></td><td>כניסה לחשבון קיים, בלי מכירה בשיחה</td></tr>
-            <tr><th>העברת כספים או מסחר</th><td class="no">אסור</td><td class="no">לא מתקבל לספרייה</td><td>מחוץ לשיחה, בערוצים של הארגון</td></tr>
+            <tr><th>טופס כרטיס אשראי במסך</th><td class="no">אסור</td><td class="no">אין יכולת מובנית</td><td>עמוד תשלום בדומיין שלכם</td></tr>
+            <tr><th>מכירת מוצר פיזי</th><td class="yes">מותר, ב-checkout חיצוני</td><td>לא נמצא איסור</td><td>‏checkout חיצוני</td></tr>
+            <tr><th>מכירת מנוי או שירות דיגיטלי</th><td class="no">אסור</td><td>לא נמצא כלל <span class="verify">לאמת</span></td><td>כניסה לחשבון קיים, בלי מכירה בשיחה</td></tr>
+            <tr><th>העברת כספים</th><td class="no">אסור</td><td class="no">לא מתקבל לספרייה</td><td>מחוץ לשיחה</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="fine">‏"לא נמצא" פירושו שלא מצאנו כלל במקורות הרשמיים, ולא שמשהו מותר. לפני תכנון מסלול תשלום, בודקים את ההנחיות העדכניות של כל מארח.</p>
-    </section>
-
-    <section class="chapter" id="uses" data-title="דוגמאות שימוש">
-      <p class="ch-num"><span class="ch-n">7</span>דוגמאות שימוש</p>
-      <h2>מתי רכיב שווה את המאמץ</h2>
-      <p class="intro">כלל אצבע: רכיב מצדיק את עצמו כשהמשתמש צריך לבחור, להשוות, לראות משהו חזותי, או לאשר נוסח מדויק. לשאלה ותשובה פשוטה, טקסט מספיק.</p>
-      <div class="uses">
-        <div class="use"><h4>השוואה</h4><p>טבלה של אפשרויות, מחירים ותכונות, עם מיון ובחירה.</p></div>
-        <div class="use"><h4>בחירת מועד או מקום</h4><p>יומן זמינות או מפה, במקום רשימה ארוכה בטקסט.</p></div>
-        <div class="use"><h4>טופס מובנה</h4><p>שדות עם בדיקת תקינות, במקום שאלות אחת אחרי השנייה בצ'אט.</p></div>
-        <div class="use"><h4>נוסח מחייב</h4><p>תנאים, סיכום הזמנה או הצהרה, מוצגים בדיוק כפי שנכתבו.</p></div>
-        <div class="use"><h4>נתונים וגרפים</h4><p>דשבורד קטן או גרף, ישירות מהמערכת שלכם.</p></div>
-        <div class="use"><h4>עבודה בכלי קיים</h4><p>ב-Claude השיקו עם Asana, ‏Figma, ‏Canva, ‏Slack, ‏monday.com ועוד. <a class="src" href="https://claude.com/blog/interactive-tools-in-claude">claude.com</a></p></div>
-      </div>
+      <p class="fine">‏"לא נמצא" פירושו שלא מצאנו כלל במקורות הרשמיים, ולא שמשהו מותר.</p>
     </section>
 
     <!-- ============ חלק ב ============ -->
     <div class="part" id="part-b">
       <p class="part-k">חלק ב</p>
       <h2>איך זה בנוי</h2>
-      <p>לארכיטקטים ולפיתוח. השמות לפי המפרט היציב של MCP Apps מ-26/1/2026, ולצידם השמות המקבילים ב-ChatGPT.</p>
+      <p>לארכיטקטים ולפיתוח. השמות לפי המפרט היציב של <span class="nw">MCP Apps</span> מ-26/1/2026, ולצידם השמות ב-ChatGPT.</p>
     </div>
 
-    <section class="chapter" id="arch" data-title="הרכיבים והזרימה">
-      <p class="ch-num"><span class="ch-n">8</span>הרכיבים והזרימה</p>
+    <section class="chapter" id="arch" data-title="הזרימה">
+      <p class="ch-num"><span class="ch-n">5</span>הזרימה</p>
       <h2>ארבעה שחקנים, ומתווך אחד</h2>
-      <p class="intro">הרכיב לא מדבר ישירות עם השרת ולא עם המודל. כל תקשורת עוברת דרך המארח, שמתווך, מסנן ואוכף הרשאות.</p>
+      <p class="intro">המסך לא מדבר ישירות עם השרת ולא עם המודל. הכול עובר דרך המארח, שמתווך ואוכף הרשאות.</p>
       <figure class="diagram">
         <svg viewBox="0 0 440 560" role="img" aria-labelledby="dgT dgD" style="direction:rtl;font-family:var(--font)">
           <title id="dgT">הזרימה ב-MCP Apps</title>
-          <desc id="dgD">המשתמש משוחח עם המארח. בתוך המארח יושבים המודל והרכיב. המארח מתווך בין שניהם לבין שרת ה-MCP באמצעות JSON-RPC.</desc>
+          <desc id="dgD">המשתמש משוחח עם המארח. בתוך המארח יושבים המודל והמסך. המארח מתווך בין שניהם לבין שרת ה-MCP.</desc>
           <defs>
             <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4d5779"/></marker>
           </defs>
-          <!-- משתמש -->
           <rect x="130" y="6" width="180" height="50" rx="8" fill="#f3f6fb" stroke="#020140" stroke-width="1.5"/>
-          <text x="220" y="37" text-anchor="middle" font-size="18" font-weight="700" fill="#020140">המשתמש</text>
+          <text x="220" y="38" text-anchor="middle" font-size="19" font-weight="700" fill="#020140">המשתמש</text>
           <line x1="220" y1="58" x2="220" y2="90" stroke="#4d5779" stroke-width="1.5" marker-start="url(#ah)" marker-end="url(#ah)"/>
           <text x="232" y="80" text-anchor="end" font-size="17" fill="#4d5779" style="direction:rtl">שואל, לוחץ, ממלא</text>
-          <!-- מארח -->
           <rect x="8" y="94" width="424" height="324" rx="14" fill="#fff" stroke="#020140" stroke-width="1.5"/>
           <text x="416" y="124" text-anchor="start" font-size="19" font-weight="700" fill="#020140" style="direction:rtl">המארח</text>
-          <text x="416" y="147" text-anchor="start" font-size="17" fill="#4d5779" style="direction:rtl">ChatGPT, ‏Claude, ‏Gemini Enterprise, ‏VS Code</text>
-          <!-- מודל -->
-          <rect x="234" y="160" width="182" height="104" rx="10" fill="#020140"/>
-          <text x="325" y="206" text-anchor="middle" font-size="21" font-weight="700" fill="#fff">המודל</text>
-          <text x="325" y="234" text-anchor="middle" font-size="17" fill="#d8dcf0">בוחר כלי, מנסח טקסט</text>
-          <!-- רכיב -->
-          <rect x="24" y="160" width="192" height="104" rx="10" fill="#a2eb9a"/>
-          <text x="120" y="206" text-anchor="middle" font-size="21" font-weight="700" fill="#020140">הרכיב שלכם</text>
-          <text x="120" y="234" text-anchor="middle" font-size="17" fill="#020140" style="direction:rtl">HTML בארגז חול</text>
-          <!-- שכבת תיווך -->
+          <text x="416" y="148" text-anchor="start" font-size="17" fill="#4d5779" style="direction:rtl">ChatGPT, ‏Claude, ‏Gemini Enterprise</text>
+          <rect x="234" y="166" width="182" height="98" rx="10" fill="#020140"/>
+          <text x="325" y="208" text-anchor="middle" font-size="21" font-weight="700" fill="#fff">המודל</text>
+          <text x="325" y="236" text-anchor="middle" font-size="17" fill="#d8dcf0">בוחר כלי, מנסח טקסט</text>
+          <rect x="24" y="166" width="192" height="98" rx="10" fill="#a2eb9a"/>
+          <text x="120" y="208" text-anchor="middle" font-size="21" font-weight="700" fill="#020140">המסך שלכם</text>
+          <text x="120" y="236" text-anchor="middle" font-size="17" fill="#020140" style="direction:rtl">HTML בארגז חול</text>
           <line x1="325" y1="266" x2="325" y2="318" stroke="#4d5779" stroke-width="1.5" marker-start="url(#ah)" marker-end="url(#ah)"/>
           <line x1="120" y1="266" x2="120" y2="318" stroke="#4d5779" stroke-width="1.5" marker-start="url(#ah)" marker-end="url(#ah)"/>
-          <text x="112" y="297" text-anchor="end" font-size="17" fill="#4d5779" direction="ltr">postMessage</text>
-          <text x="313" y="297" text-anchor="start" font-size="17" fill="#4d5779" style="direction:rtl">קריאה לכלי</text>
+          <text x="108" y="298" text-anchor="end" font-size="16" fill="#4d5779" direction="ltr">postMessage</text>
+          <text x="313" y="298" text-anchor="start" font-size="17" fill="#4d5779" style="direction:rtl">קריאה לכלי</text>
           <rect x="24" y="322" width="392" height="80" rx="8" fill="#e3eef8"/>
           <text x="220" y="356" text-anchor="middle" font-size="19" font-weight="700" fill="#020140">המארח מתווך</text>
-          <text x="220" y="382" text-anchor="middle" font-size="17" fill="#212058" style="direction:rtl">מריץ כלים, טוען את ה-UI, אוכף CSP</text>
-          <!-- שרת -->
+          <text x="220" y="383" text-anchor="middle" font-size="17" fill="#212058" style="direction:rtl">מריץ כלים, טוען את המסך, אוכף CSP</text>
           <line x1="220" y1="404" x2="220" y2="468" stroke="#3c65e3" stroke-width="2" marker-start="url(#ah)" marker-end="url(#ah)"/>
           <text x="232" y="444" text-anchor="start" font-size="17" fill="#2a49ad" direction="ltr">MCP · JSON-RPC</text>
           <rect x="90" y="472" width="260" height="80" rx="10" fill="#fff" stroke="#3c65e3" stroke-width="2"/>
           <text x="220" y="506" text-anchor="middle" font-size="21" font-weight="700" fill="#020140">שרת ה-MCP שלכם</text>
-          <text x="220" y="533" text-anchor="middle" font-size="17" fill="#212058" style="direction:rtl">כלים, משאבי UI, נתונים</text>
+          <text x="220" y="534" text-anchor="middle" font-size="17" fill="#212058" style="direction:rtl">כלים, מסכים, נתונים</text>
         </svg>
-        <figcaption>ירוק: הרכיב שאתם בונים. כהה: המודל. כחול: שרת ה-MCP שלכם. מה כל צד רואה, בפרק 9.</figcaption>
+        <figcaption>ירוק: המסך שאתם בונים. כהה: המודל. כחול: השרת שלכם.</figcaption>
       </figure>
-      <h3>מה קורה, לפי הסדר</h3>
       <ol class="steps">
-        <li><span><span class="who">שרת, מראש</span>השרת מגדיר כלי, ובו הפניה למשאב UI: <code>_meta.ui.resourceUri</code> עם כתובת שמתחילה ב-<code>ui://</code>. המשאב הוא מסמך HTML מסוג <code>text/html;profile=mcp-app</code>.</span></li>
-        <li><span><span class="who">משתמש ומודל</span>המשתמש כותב בקשה. המודל מחליט להפעיל את הכלי, ומעביר לו ארגומנטים.</span></li>
-        <li><span><span class="who">מארח ושרת</span>המארח מריץ את הכלי בשרת, ומקבל תוצאה עם שלושה חלקים: <code>content</code>, ‏<code>structuredContent</code> ו-<code>_meta</code>.</span></li>
-        <li><span><span class="who">מארח</span>המארח קורא את משאב ה-UI, ומציג אותו ב-iframe בארגז חול. במארח באתר זה iframe כפול, על דומיין נפרד.</span></li>
-        <li><span><span class="who">מארח ורכיב</span>הרכיב מתאתחל (<code>ui/initialize</code>) ומקבל את הקלט ואת תוצאת הכלי, בהודעות JSON-RPC על גבי postMessage.</span></li>
-        <li><span><span class="who">משתמש ורכיב</span>המשתמש לוחץ. הרכיב יכול להפעיל כלי נוסף בשרת (<code>tools/call</code>), לשלוח הודעה לשיחה (<code>ui/message</code>), לעדכן את ההקשר של המודל (<code>ui/update-model-context</code>), או לפתוח קישור (<code>ui/open-link</code>).</span></li>
+        <li><span><span class="who">מראש</span>השרת מגדיר כלי, ומצמיד לו מסך: <code>_meta.ui.resourceUri</code> מצביע על משאב <code>ui://</code>, שהוא מסמך HTML מסוג <code>text/html;profile=mcp-app</code>.</span></li>
+        <li><span><span class="who">בשיחה</span>המודל מחליט להפעיל את הכלי, וממלא לו ארגומנטים.</span></li>
+        <li><span><span class="who">המארח</span>מריץ את הכלי בשרת, טוען את המסך ומציג אותו ב-iframe בארגז חול, יחד עם תוצאת הכלי.</span></li>
+        <li><span><span class="who">המסך</span>המשתמש לוחץ. המסך יכול להפעיל כלי נוסף בשרת, לשלוח הודעה לשיחה, לעדכן את ההקשר של המודל, או לפתוח קישור. הכול בהודעות JSON-RPC דרך המארח.</span></li>
       </ol>
-      <p class="fine">מקורות: <a href="https://github.com/modelcontextprotocol/ext-apps/blob/main/specification/2026-01-26/apps.mdx">המפרט</a> · <a href="https://modelcontextprotocol.io/extensions/apps/overview">סקירת MCP Apps</a>.</p>
+      <p class="fine">מקורות: <a href="https://github.com/modelcontextprotocol/ext-apps/blob/main/specification/2026-01-26/apps.mdx">המפרט</a> · <a href="https://modelcontextprotocol.io/extensions/apps/overview">סקירת <span class="nw">MCP Apps</span></a>.</p>
     </section>
 
     <section class="chapter" id="sees" data-title="מה המודל רואה">
-      <p class="ch-num"><span class="ch-n">9</span>מה המודל רואה ומה לא</p>
+      <p class="ch-num"><span class="ch-n">6</span>מה המודל רואה</p>
       <h2>שלושה שדות, שלושה קהלים</h2>
-      <p class="intro">ההחלטה מה לשים בכל שדה היא החלטת מוצר: מה המודל צריך לדעת כדי להמשיך את השיחה, ומה נועד רק לתצוגה.</p>
+      <p class="intro">מה לשים בכל שדה היא החלטת מוצר: מה המודל צריך כדי להמשיך את השיחה, ומה נועד רק לתצוגה.</p>
       <div class="tbl-wrap scroll-x">
         <table class="tbl-sees">
-          <thead><tr><th>שדה בתוצאת הכלי</th><th>המודל</th><th>הרכיב</th><th>למה משתמשים בו</th></tr></thead>
+          <thead><tr><th>שדה בתוצאת הכלי</th><th>המודל</th><th>המסך</th><th>למה</th></tr></thead>
           <tbody>
-            <tr><th><code>content</code></th><td class="yes">רואה</td><td class="yes">רואה</td><td>טקסט קצר שהמודל יכול לצטט או לסכם</td></tr>
-            <tr><th><code>structuredContent</code></th><td class="yes">רואה</td><td class="yes">רואה</td><td>הנתונים המובנים: גם הבסיס לתשובת המודל, וגם מה שהרכיב מציג</td></tr>
-            <tr><th><code>_meta</code></th><td class="no">לא רואה</td><td class="yes">רואה</td><td>נתונים לתצוגה בלבד, שהמודל לא צריך</td></tr>
+            <tr><th><code>content</code></th><td class="yes">רואה</td><td class="yes">רואה</td><td>טקסט קצר שהמודל יכול לסכם</td></tr>
+            <tr><th><code>structuredContent</code></th><td class="yes">רואה</td><td class="yes">רואה</td><td>הנתונים: בסיס לתשובת המודל ולמה שהמסך מציג</td></tr>
+            <tr><th><code>_meta</code></th><td class="no">לא רואה</td><td class="yes">רואה</td><td>נתונים לתצוגה בלבד</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="fine">לפי <a href="https://developers.openai.com/apps-sdk/reference">ה-Reference של OpenAI</a>: רק <code>content</code> ו-<code>structuredContent</code> נכנסים לתמליל השיחה.</p>
-      <h3>ערוצים נוספים בין הרכיב לבין השיחה</h3>
+      <p class="fine">לפי <a href="https://developers.openai.com/apps-sdk/reference">ה-Reference של OpenAI</a>. ‏<code>_meta</code> מוסתר מהמודל, אבל הוא לא תחליף להרשאות או לאחסון מאובטח.</p>
       <ul class="bullets">
-        <li><b>כלי שרק הרכיב רואה.</b> ‏<code>_meta.ui.visibility</code> מקבל <code>"model"</code> ו-<code>"app"</code>. כלי שמסומן <code>"app"</code> בלבד לא מופיע ברשימת הכלים של המודל. טוב לפעולות כמו רענון או מעבר עמוד.</li>
-        <li><b>הודעה לשיחה.</b> ‏<code>ui/message</code>, וב-ChatGPT ‏<code>sendFollowUpMessage</code>, שולח הודעה לשיחה, והמודל מגיב לה.</li>
-        <li><b>עדכון שקט של ההקשר.</b> ‏<code>ui/update-model-context</code> מעדכן את מה שהמודל יודע על מצב הרכיב, בלי הודעה גלויה. איך כל מארח משלב את העדכון בשיחה: <span class="verify">לאמת</span></li>
-        <li><b>תוצאה של כלי שהרכיב הפעיל</b> חוזרת לרכיב. אם המודל צריך לדעת מה קרה, הרכיב מעדכן אותו באחד משני הערוצים הקודמים. האם המודל רואה את התוצאה בלי זה: <span class="verify">לאמת</span> בכל מארח.</li>
-        <li><b>מצבי תצוגה.</b> ‏<code>inline</code> בתוך השיחה (ברירת המחדל), ‏<code>fullscreen</code>, ו-<code>pip</code> לחלון צף. הרכיב מבקש, והמארח מחליט.</li>
+        <li><b>כלי שרק המסך רואה.</b> ‏<code>_meta.ui.visibility: ["app"]</code> מסתיר כלי מהמודל. מתאים לרענון, לסינון או למעבר עמוד.</li>
+        <li><b>הודעה לשיחה.</b> ‏<code>ui/message</code> (ב-ChatGPT: <code>sendFollowUpMessage</code>) שולח הודעה, והמודל מגיב לה.</li>
+        <li><b>עדכון שקט.</b> ‏<code>ui/update-model-context</code> מעדכן את המודל במצב המסך, בלי הודעה גלויה. איך כל מארח משלב אותו: <span class="verify">לאמת</span></li>
+        <li><b>מצבי תצוגה.</b> בתוך השיחה (ברירת המחדל), מסך מלא, או חלון צף. המסך מבקש, והמארח מחליט.</li>
       </ul>
-      <div class="callout">המודל הוא שממלא את הארגומנטים של הכלי.
-        <span>מה שהרכיב מציג מבוסס על קלט שהמודל ניסח. לכן השרת בודק כל ארגומנט, ומחשב בעצמו כל ערך שחייב להיות נכון, כמו מחיר.</span></div>
+      <div class="callout">המודל ממלא את הארגומנטים של הכלי.
+        <span>לכן השרת בודק כל ארגומנט, ומחשב בעצמו כל ערך שחייב להיות נכון, כמו מחיר.</span></div>
     </section>
 
-    <section class="chapter" id="build" data-title="מה זה דורש מהפיתוח">
-      <p class="ch-num"><span class="ch-n">10</span>מה זה דורש מהפיתוח</p>
+    <section class="chapter" id="build" data-title="מה צריך לבנות">
+      <p class="ch-num"><span class="ch-n">7</span>מה צריך לבנות</p>
       <h2>שרת MCP רגיל, ועוד חמש שכבות</h2>
-      <p class="intro">הבסיס הוא שרת MCP מרוחק, כמו כל מחבר. ‏MCP Apps מוסיף עליו את מה שצריך כדי להציג ממשק בבטחה.</p>
       <ol class="steps">
-        <li><span><span class="who">משאבי UI</span>כל רכיב הוא משאב <code>ui://</code> עם HTML שלם. הכלי מצביע עליו ב-<code>_meta.ui.resourceUri</code>. ה-SDK הרשמי, <code>@modelcontextprotocol/ext-apps</code>, עוזר, אבל הוא לא חובה.</span></li>
-        <li><span><span class="who">‏CSP</span>כל דומיין שהרכיב פונה אליו מוצהר ב-<code>_meta.ui.csp</code>: ‏<code>connectDomains</code> לקריאות רשת, ‏<code>resourceDomains</code> לתמונות, לסקריפטים ולגופנים, ו-<code>frameDomains</code> להטמעות. בלי הצהרה, המארח חוסם הכול. ב-Claude ‏<code>frameDomains</code> מוגבל כרגע.</span></li>
-        <li><span><span class="who">אירוח</span>נקודת קצה HTTPS ציבורית ויציבה. ב-Claude השרת צריך להיות נגיש מטווחי ה-IP של Anthropic. <a class="src" href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp">support.claude.com</a></span></li>
-        <li><span><span class="who">הזדהות</span>‏OAuth 2.1 לפי מפרט ההרשאות של MCP, עם PKCE. ב-ChatGPT הרישום המועדף הוא CIMD, ו-DCR עדיין נתמך. <a class="src" href="https://developers.openai.com/apps-sdk/build/auth">developers.openai.com</a></span></li>
-        <li><span><span class="who">הגשה</span>‏ChatGPT: אימות זהות או עסק, שרת אחד לכל אפליקציה, 5 תרחישי בדיקה חיוביים ו-3 שליליים, סרטון הדגמה, פרטי משתמש לבודקים, כתובות לאתר, לתמיכה, לפרטיות ולתנאים, ואפשרות להגביל מדינות. <a class="src" href="https://developers.openai.com/apps-sdk/deploy/submission">developers.openai.com</a> ‏Claude: לכל כלי <code>title</code> וסימון <code>readOnlyHint</code> או <code>destructiveHint</code>, כלים נפרדים לקריאה ולכתיבה, ופרטי משתמש לבדיקה. רישום מתחיל כ-Community, ויכול לעלות ל-Verified. <a class="src" href="https://claude.com/docs/connectors/building/review-criteria">claude.com</a></span></li>
+        <li><span><span class="who">מסכים</span>כל מסך הוא משאב <code>ui://</code> עם HTML שלם, והכלי מצביע עליו. ה-SDK הרשמי, <code>@modelcontextprotocol/ext-apps</code>, עוזר, אבל הוא לא חובה.</span></li>
+        <li><span><span class="who">‏CSP</span>כל דומיין שהמסך פונה אליו מוצהר ב-<code>_meta.ui.csp</code>. בלי הצהרה, המארח חוסם הכול.</span></li>
+        <li><span><span class="who">אירוח</span>נקודת קצה HTTPS ציבורית. ב-Claude, נגישה מטווחי ה-IP של Anthropic. <a class="src" href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp">Claude</a></span></li>
+        <li><span><span class="who">הזדהות</span>‏OAuth 2.1 לפי מפרט ההרשאות של MCP, עם PKCE. <a class="src" href="https://developers.openai.com/apps-sdk/build/auth">OpenAI</a></span></li>
+        <li><span><span class="who">הגשה</span>‏ChatGPT: אימות עסק, תרחישי בדיקה, סרטון הדגמה ופרטי משתמש לבודקים. <a class="src" href="https://developers.openai.com/apps-sdk/deploy/submission">OpenAI</a> ‏Claude: לכל כלי שם וסימון קריאה או כתיבה, ופרטי משתמש לבדיקה. <a class="src" href="https://claude.com/docs/connectors/building/review-criteria">Claude</a></span></li>
       </ol>
       <h3>תקן אחד, ושני דיאלקטים</h3>
-      <p>‏ChatGPT מממש את תקן MCP Apps, ו-OpenAI ממליצה לבנות עליו. השמות הישנים של ChatGPT נשארים זמינים, ויש יכולות שקיימות רק שם. <a class="src" href="https://developers.openai.com/apps-sdk/mcp-apps-in-chatgpt">developers.openai.com</a></p>
+      <p>‏ChatGPT מממש את התקן, ו-OpenAI ממליצה לבנות עליו. השמות הישנים של ChatGPT נשארים, ויש יכולות שקיימות רק שם. <a class="src" href="https://developers.openai.com/apps-sdk/mcp-apps-in-chatgpt">OpenAI</a></p>
       <div class="tbl-wrap scroll-x">
         <table class="tbl-map">
-          <thead><tr><th>בתקן MCP Apps</th><th>ב-ChatGPT</th></tr></thead>
+          <thead><tr><th>בתקן</th><th>ב-ChatGPT</th></tr></thead>
           <tbody>
             <tr><td><code>_meta.ui.resourceUri</code></td><td><code>openai/outputTemplate</code></td></tr>
             <tr><td><code>tools/call</code></td><td><code>window.openai.callTool</code></td></tr>
             <tr><td><code>ui/message</code></td><td><code>window.openai.sendFollowUpMessage</code></td></tr>
-            <tr><td><code>ui/notifications/tool-result</code></td><td><code>window.openai.toolOutput</code></td></tr>
-            <tr><td><code>_meta.ui.domain</code></td><td>חובה לאפליקציה עם UI ב-ChatGPT</td></tr>
-            <tr><td>אין מקביל בתקן</td><td><code>openai/widgetCSP.redirect_domains</code><br><code>widgetState</code><br><code>requestCheckout</code><br>והעלאת קבצים</td></tr>
+            <tr><td>אין מקביל</td><td><code>widgetState</code><br><code>requestCheckout</code><br><code>openai/widgetCSP.redirect_domains</code></td></tr>
           </tbody>
         </table>
       </div>
-    </section>
-
-    <section class="chapter" id="code" data-title="איך זה נראה בקוד">
-      <p class="ch-num"><span class="ch-n">11</span>איך זה נראה בקוד</p>
-      <h2>שתי הודעות, בלי ספרייה</h2>
-      <p class="intro">כדי לראות כמה התוספת קטנה: כך נראים, ברמת הפרוטוקול, כלי שמצביע על רכיב, והמשאב עצמו. הדוגמה כללית ומקוצרת.</p>
+      <details class="more">
+        <summary>איך זה נראה בקוד</summary>
+        <div class="more-body">
+          <p class="fine">ברמת הפרוטוקול, בלי ספרייה: כלי שמצביע על מסך, והמסך עצמו. מקוצר.</p>
 <pre><span class="c">// 1. The tool, as returned by tools/list</span>
 {
   "name": "show_options",
-  "title": "Show options",
   "description": "Shows the available options as an interactive table.",
   "inputSchema": { "type": "object", "properties": { "query": { "type": "string" } } },
-  "_meta": {
-    "ui": { "resourceUri": "ui://example/options.html" }
-  }
+  "_meta": { "ui": { "resourceUri": "ui://example/options.html" } }
 }
 
 <span class="c">// 2. The UI resource, as returned by resources/read</span>
@@ -646,65 +559,48 @@ pre .c{color:#a2eb9a}
     "uri": "ui://example/options.html",
     "mimeType": "text/html;profile=mcp-app",
     "text": "&lt;!doctype html&gt;&lt;html&gt;...&lt;/html&gt;",
-    "_meta": {
-      "ui": {
-        "csp": { "connectDomains": ["https://api.example.com"] },
-        "prefersBorder": true
-      }
-    }
+    "_meta": { "ui": { "csp": { "connectDomains": ["https://api.example.com"] } } }
   }]
 }</pre>
-      <p class="fine">השמות לפי <a href="https://github.com/modelcontextprotocol/ext-apps/blob/main/specification/2026-01-26/apps.mdx">המפרט מ-26/1/2026</a>. ‏<a href="https://github.com/modelcontextprotocol/ext-apps">הריפו של ext-apps</a> כולל דוגמאות מלאות ו-SDK.</p>
+        </div>
+      </details>
     </section>
 
-    <!-- ============ סיום ============ -->
     <section class="chapter" id="faq" data-title="שאלות נפוצות">
-      <p class="ch-num"><span class="ch-n">12</span>שאלות נפוצות</p>
+      <p class="ch-num"><span class="ch-n">8</span>שאלות נפוצות</p>
       <h2>מה שואלים בדרך כלל</h2>
       <div class="faq">
-        <details><summary>צריך לבנות פעם אחת ל-ChatGPT ופעם אחת ל-Claude?</summary>
-          <div class="a"><p>לא. בונים לפי תקן MCP Apps, ואותו שרת ורכיב עובדים בשניהם. מה שמשתנה: ההגשה והסקירה בכל חנות, כמה שדות שקיימים רק ב-ChatGPT, והבדלים בהתנהגות בטלפון ובהגבלות CSP. כדאי לבדוק בכל מארח בנפרד.</p></div></details>
-        <details><summary>מה ההבדל בין Apps SDK לבין MCP Apps?</summary>
-          <div class="a"><p>‏Apps SDK הוא הכלים והתיעוד של OpenAI לבניית אפליקציות ל-ChatGPT. ‏MCP Apps הוא התקן הפתוח. ‏ChatGPT מממש את התקן, ו-Apps SDK מוסיף עליו יכולות ושמות משלו. ב-OpenAI קוראים היום לאפליקציות האלה plugins.</p></div></details>
-        <details><summary>אפשר להכריח את המודל להציג את הרכיב?</summary>
-          <div class="a"><p>לא. המודל מחליט אם ומתי להפעיל כלי, לפי השיחה ולפי תיאור הכלי. מה שאפשר: תיאור ברור ומדויק של מה שהכלי עושה. ניסוח שמנסה לגרום למודל להעדיף אתכם אסור, ונדחה בסקירה.</p></div></details>
-        <details><summary>המודל יכול לשנות את מה שמוצג בתוך הרכיב?</summary>
-          <div class="a"><p>הוא לא עורך את ה-HTML. אבל הוא ממלא את הארגומנטים שהכלי מקבל, ולכן הנתונים שהרכיב מציג יכולים לנבוע מקלט שלו. ערכים שחייבים להיות נכונים מחושבים בשרת.</p></div></details>
-        <details><summary>אפשר לשים מידע רגיש ב-_meta, כי המודל לא רואה אותו?</summary>
-          <div class="a"><p>לא כדאי. ‏OpenAI כותבת ש-<code>_meta</code> מוסתר מהמודל, אבל הוא לא תחליף להרשאות או לאחסון מאובטח. ובכל מקרה, סוגי המידע המוגבל אסורים בכל שדה.</p></div></details>
-        <details><summary>זה עובד בטלפון?</summary>
-          <div class="a"><p>כן, ב-ChatGPT וב-Claude, עם הבדלים. ב-Claude לטלפון הרכיב רץ ב-WebView של המערכת, בלי מצלמה, מיקרופון ומיקום, ומחבר נוסף קודם באתר או במחשב. ב-ChatGPT חלון צף עשוי להפוך למסך מלא. מעצבים לרוחב צר קודם.</p></div></details>
-        <details><summary>אפשר לגבות תשלום בתוך הרכיב?</summary>
-          <div class="a"><p>ב-ChatGPT, לא בטופס משלכם או של ספק צד שלישי. מוצרים פיזיים נמכרים ב-checkout חיצוני בדומיין שלכם, ומסך התשלום של ChatGPT פתוח רק למשתתפי private beta. הפירוט בפרק 6.</p></div></details>
-        <details><summary>מה עם כלים פנימיים בארגון?</summary>
-          <div class="a"><p>‏MCP Apps עובד גם במארחים ארגוניים, כמו Gemini Enterprise, ‏Microsoft 365 Copilot ו-VS Code. ב-Claude, מחבר מותאם אישית מתחבר בלי לעבור דרך ספריית המחברים, וב-Team וב-Enterprise הבעלים יכולים לכבות את תצוגת הרכיבים. איך זה עובד ב-ChatGPT לארגונים: <span class="verify">לאמת</span></p></div></details>
+        <details><summary><span>צריך לבנות פעם ל-ChatGPT ופעם ל-Claude?</span></summary>
+          <div class="a">לא. בונים לפי התקן, ואותו שרת ומסך עובדים בשניהם. מה שנפרד: ההגשה בכל חנות, כמה יכולות שקיימות רק ב-ChatGPT, והבדלים בטלפון. בודקים בכל מארח.</div></details>
+        <details><summary><span>מה ההבדל בין Apps SDK לבין <span class="nw">MCP Apps</span>?</span></summary>
+          <div class="a">‏<span class="nw">MCP Apps</span> הוא התקן הפתוח. ‏Apps SDK הוא הכלים של OpenAI ל-ChatGPT, שמממשים את התקן ומוסיפים עליו. ב-OpenAI קוראים היום לאפליקציות האלה plugins.</div></details>
+        <details><summary><span>המודל יכול לשנות את מה שמוצג במסך?</span></summary>
+          <div class="a">הוא לא עורך את ה-HTML. אבל הוא ממלא את הארגומנטים של הכלי, ולכן הנתונים במסך יכולים לנבוע מקלט שלו. ערכים שחייבים להיות נכונים מחושבים בשרת.</div></details>
+        <details><summary><span>זה עובד בטלפון?</span></summary>
+          <div class="a">כן, באפליקציות של ChatGPT ושל Claude, עם הבדלים: במסך צר הגובה מוגבל, ובחלק מהמארחים חלון צף נפתח כמסך מלא. ב-Claude מחבר מוסיפים קודם באתר או במחשב. מעצבים לטלפון קודם.</div></details>
+        <details><summary><span>אפשר להשתמש בזה בכלים פנימיים בארגון?</span></summary>
+          <div class="a">כן. ‏Gemini Enterprise, ‏Microsoft 365 Copilot ו-VS Code תומכים, וב-Claude אפשר לחבר שרת כמחבר מותאם אישית בלי לעבור דרך הספרייה הציבורית.</div></details>
       </div>
     </section>
 
     <section class="chapter" id="refs" data-title="מקורות ומה לאמת">
-      <p class="ch-num"><span class="ch-n">13</span>מקורות ומה לאמת</p>
+      <p class="ch-num"><span class="ch-n">9</span>מקורות ומה לאמת</p>
       <h2>מאיפה המידע, ומה עוד פתוח</h2>
       <h3>מה סומן "לאמת"</h3>
       <ul class="bullets">
-        <li>זמינות האפליקציות ב-ChatGPT היום לפי תוכנית ואזור, כולל אירופה, ו-Developer mode. עמודי העזרה של OpenAI לא נפתחו לבדיקה ישירה, ומה שנמצא סותר.</li>
-        <li>רשימת המכשירים המלאה ב-ChatGPT וב-Microsoft 365 Copilot.</li>
-        <li>שלב הזמינות של MCP Apps ב-Gemini Enterprise. לא נמצא ב-release notes, רק בפוסט בבלוג.</li>
-        <li>איך המשתמש חוזר לשיחה אחרי checkout חיצוני, ומה מכיל <code>redirectUrl</code>.</li>
-        <li>התאריך המדויק של השינוי ב-Instant Checkout במרץ 2026, והתנאים לזכאות לתשלום בתוך ChatGPT.</li>
+        <li>באילו תוכניות של ChatGPT המסכים זמינים היום, ומי יכול לחבר שרת פרטי לבדיקות (Developer mode). עמודי העזרה של OpenAI לא נפתחו לבדיקה ישירה.</li>
+        <li>אם אפשר לרכוש Gemini Enterprise בישראל, ואיך המסכים נראים בטלפון ב-Gemini Enterprise וב-Microsoft 365 Copilot.</li>
+        <li>איך המשתמש חוזר לשיחה אחרי תשלום באתר חיצוני.</li>
         <li>אם ל-Claude יש כלל ייעודי על מכירת שירותים דיגיטליים.</li>
-        <li>איך כל מארח משלב בשיחה עדכון הקשר ותוצאה של כלי שהרכיב הפעיל.</li>
+        <li>איך כל מארח משלב בשיחה עדכון שקט מהמסך.</li>
       </ul>
       <h3>מקורות עיקריים</h3>
       <ul class="refs">
-        <li><a href="https://blog.modelcontextprotocol.io/posts/2026-01-26-mcp-apps/">MCP Apps · הודעת ההשקה</a> <span class="t">· 26/1/2026</span></li>
-        <li><a href="https://github.com/modelcontextprotocol/ext-apps/blob/main/specification/2026-01-26/apps.mdx">המפרט של MCP Apps</a> <span class="t">· גרסה 2026-01-26</span></li>
-        <li><a href="https://modelcontextprotocol.io/extensions/apps/overview">סקירת MCP Apps</a> · <a href="https://modelcontextprotocol.io/extensions/client-matrix">טבלת התמיכה במארחים</a></li>
-        <li><a href="https://developers.openai.com/apps-sdk/mcp-apps-in-chatgpt">MCP Apps ב-ChatGPT</a> · <a href="https://developers.openai.com/apps-sdk/reference">Apps SDK Reference</a></li>
-        <li><a href="https://developers.openai.com/apps-sdk/app-submission-guidelines">הנחיות ההגשה של OpenAI</a> · <a href="https://developers.openai.com/apps-sdk/build/monetization">מונטיזציה</a> · <a href="https://developers.openai.com/apps-sdk/deploy/submission">הגשה</a></li>
-        <li><a href="https://claude.com/blog/interactive-tools-in-claude">Interactive tools in Claude</a> <span class="t">· 26/1/2026</span> · <a href="https://support.claude.com/en/articles/13454812-use-interactive-connectors-in-claude">מרכז העזרה</a></li>
-        <li><a href="https://claude.com/docs/connectors/building/review-criteria">קריטריוני הסקירה של Claude</a> · <a href="https://claude.com/docs/connectors/building/mcp-apps/design-guidelines">הנחיות עיצוב</a></li>
-        <li><a href="https://cloud.google.com/blog/topics/developers-practitioners/devs-guide-to-mcp-apps-in-gemini">MCP Apps ב-Gemini</a> <span class="t">· 20/10/2026</span></li>
-        <li><a href="https://code.visualstudio.com/updates/v1_109">VS Code 1.109</a> <span class="t">· 4/2/2026</span></li>
+        <li><a href="https://blog.modelcontextprotocol.io/posts/2026-01-26-mcp-apps/">MCP Apps · הודעת ההשקה</a> <span class="t">· 26/1/2026</span> · <a href="https://github.com/modelcontextprotocol/ext-apps/blob/main/specification/2026-01-26/apps.mdx">המפרט</a> · <a href="https://modelcontextprotocol.io/extensions/client-matrix">טבלת התמיכה</a></li>
+        <li><a href="https://developers.openai.com/apps-sdk/mcp-apps-in-chatgpt">MCP Apps ב-ChatGPT</a> · <a href="https://developers.openai.com/apps-sdk/reference">Reference</a> · <a href="https://developers.openai.com/apps-sdk/app-submission-guidelines">הנחיות הגשה</a> · <a href="https://developers.openai.com/apps-sdk/build/monetization">מונטיזציה</a></li>
+        <li><a href="https://claude.com/blog/interactive-tools-in-claude">Interactive tools in Claude</a> · <a href="https://support.claude.com/en/articles/13454812-use-interactive-connectors-in-claude">מרכז העזרה</a> · <a href="https://claude.com/docs/connectors/building/review-criteria">קריטריוני סקירה</a></li>
+        <li><a href="https://cloud.google.com/blog/topics/developers-practitioners/devs-guide-to-mcp-apps-in-gemini">MCP Apps ב-Gemini Enterprise</a> <span class="t">· 20/10/2026</span></li>
+        <li>זמינות בישראל: <a href="https://help.openai.com/en/articles/7947663-chatgpt-supported-countries">OpenAI</a> · <a href="https://www.anthropic.com/supported-countries">Anthropic</a> · <a href="https://docs.cloud.google.com/gemini/enterprise/docs/locations">Gemini Enterprise</a> · <a href="https://learn.microsoft.com/en-us/microsoft-365/enterprise/advanced-data-residency">Microsoft</a></li>
       </ul>
     </section>
   </main>
@@ -713,7 +609,7 @@ pre .c{color:#a2eb9a}
 <footer class="foot">
   <div class="foot-in">
     <img src="assets/migdal-logo.png" alt="מגדל">
-    <span>מדריך כללי ל-MCP Apps · נבדק מול מקורות רשמיים ב-3/11/2026</span>
+    <span>מדריך כללי ל-<span class="nw">MCP Apps</span> · נבדק מול מקורות רשמיים ב-3/11/2026</span>
   </div>
 </footer>
 
@@ -721,6 +617,7 @@ pre .c{color:#a2eb9a}
 (function(){
   var toc=document.getElementById('toc'), tocM=document.getElementById('tocM');
   tocM.innerHTML=toc.innerHTML;
+  tocM.addEventListener('click',function(e){ if(e.target.closest('a')) tocM.parentNode.removeAttribute('open'); });
   [].forEach.call(document.querySelectorAll('.tbl-wrap table'),function(t){
     var hs=[].map.call(t.querySelectorAll('thead th'),function(h){return h.textContent;});
     t.classList.add('stack');
@@ -728,7 +625,6 @@ pre .c{color:#a2eb9a}
       [].forEach.call(r.children,function(c,i){ if(c.tagName==='TD' && hs[i] && !c.hasAttribute('colspan')) c.setAttribute('data-label',hs[i]); });
     });
   });
-  tocM.addEventListener('click',function(e){ if(e.target.closest('a')) tocM.parentNode.removeAttribute('open'); });
   var links=[].slice.call(document.querySelectorAll('#toc a'));
   var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
   var where=document.getElementById('topWhere'), bar=document.getElementById('bar');
