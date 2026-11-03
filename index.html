@@ -321,7 +321,8 @@ pre .c{color:#a2eb9a}
           <p class="k">מה זה נותן</p>
           <h3>שליטה במה שהלקוח רואה</h3>
           <ul>
-            <li><b>נוסח מדויק.</b>מחיר, תנאים ואישורים מוצגים כפי שכתבתם. טקסט רגיל המודל מנסח מחדש.</li>
+            <li><b>נוסח מדויק.</b>מחיר, תנאים, הצהרות וגילוי נאות מוצגים כפי שכתבתם, ולא כפי שהמודל מנסח. בגוף בפיקוח, כמו בנק או חברת ביטוח, זה קריטי.</li>
+            <li><b>מידע שהמודל לא רואה.</b>יתרה, פרטי חשבון או מסמך אישי מוצגים במסך בלי להיכנס לשיחה. המידע עדיין עובר דרך המארח (פרק 6).</li>
             <li><b>פעולה, לא רק שיחה.</b>בחירה, טופס ואישור בלחיצה, במקום הלוך ושוב בצ'אט.</li>
             <li><b>להיות איפה שהלקוחות כבר נמצאים.</b>פיתוח אחד עובד בכמה מארחים.</li>
           </ul>
@@ -391,7 +392,7 @@ pre .c{color:#a2eb9a}
       <ul class="bullets">
         <li><b>המודל מחליט מתי.</b> אי אפשר לחייב את המודל להציג את המסך. תיאור כלי שמנסה לכוון את המודל להעדיף אתכם אסור, ונדחה בסקירה. <a class="src" href="https://developers.openai.com/apps-sdk/app-submission-guidelines">OpenAI</a> <a class="src" href="https://claude.com/docs/connectors/building/review-criteria">Claude</a></li>
         <li><b>מחוץ למסך, המודל מנסח.</b> אין שדה שמחייב את המארח להציג טקסט מילה במילה. מה שחייב להיות מדויק, מקומו בתוך המסך. <a class="src" href="https://developers.openai.com/apps-sdk/reference">OpenAI</a></li>
-        <li><b>מידע רגיש.</b> ב-ChatGPT אסור לאסוף, לבקש או לעבד פרטי כרטיס אשראי, מידע רפואי מוגן, מזהים ממשלתיים וסיסמאות. <a class="src" href="https://developers.openai.com/apps-sdk/app-submission-guidelines">OpenAI</a></li>
+        <li><b>מידע רגיש.</b> ב-ChatGPT אסור לאסוף, לבקש או לעבד פרטי כרטיס אשראי, מידע רפואי מוגן, מזהים ממשלתיים וסיסמאות. <a class="src" href="https://developers.openai.com/apps-sdk/app-submission-guidelines">OpenAI</a> ב-Claude אין רשימה כזאת. הכלל הוא לאסוף רק מה שנחוץ, לטפל במידע אישי ורגיש באחריות, ולפרסם מדיניות פרטיות. <a class="src" href="https://support.claude.com/en/articles/13145358">Anthropic</a></li>
         <li><b>אין גישה לשיחה.</b> השרת לא יכול לקרוא את היסטוריית השיחה, ולא את הזיכרון של המשתמש. <a class="src" href="https://claude.com/docs/connectors/building/review-criteria">Claude</a></li>
         <li><b>כל חנות בנפרד.</b> אפליקציה ציבורית עוברת סקירה ב-ChatGPT וב-Claude, כל אחת לפי ההנחיות שלה. פרסומות אסורות בשתיהן.</li>
       </ul>
@@ -408,6 +409,15 @@ pre .c{color:#a2eb9a}
         <li>התשלום מתבצע ב-checkout חיצוני, בדומיין שלכם. אסור לשבץ או לארח checkout של צד שלישי בתוך המסך, ואסור לאסוף פרטי כרטיס.</li>
       </ul>
       <p class="fine">המקור: <a href="https://developers.openai.com/apps-sdk/app-submission-guidelines">הנחיות ההגשה של OpenAI</a>.</p>
+      <h3>מה ההנחיות של Anthropic קובעות</h3>
+      <ul class="bullets">
+        <li>אין ב-Claude יכולת תשלום מובנית למחברים ולמסכים. התשלום עובר לאתר שלכם, כמו ב-ChatGPT.</li>
+        <li>אסור לאפשר העברת כסף או נכסים פיננסיים, או עסקאות פיננסיות שמתבצעות לבד בשם המשתמש, בלי אדם שמאשר בתהליך. תוכנת קריפטו ופרסומות לא מתקבלות לספרייה.</li>
+        <li>ביטוח, פיננסים, בריאות ומשפט מוגדרים תחומים בסיכון גבוה. בהם נדרש אדם שמאשר בתהליך, ויידוע ישיר של המשתמשים.</li>
+        <li>כלי שמשנה נתונים מסומן כפעולה הרסנית (<code>destructiveHint</code>), ו-Claude מבקש מהמשתמש אישור לפני כל הפעלה.</li>
+        <li>לא מצאנו כלל על מכירת מוצרים דיגיטליים, ולא על איסוף פרטי כרטיס. <span class="verify">לאמת</span></li>
+      </ul>
+      <p class="fine">המקורות: <a href="https://support.claude.com/en/articles/13145358">מדיניות הספרייה של Anthropic</a> · <a href="https://claude.com/docs/connectors/building/review-criteria">קריטריוני הסקירה</a>. בהגשה לספרייה מאשרים גם מדיניות לעסקאות פיננסיות, <a href="https://claude.com/docs/connectors/building/submission">שהנוסח המלא שלה לא פורסם</a>.</p>
       <h3>הדרך המקובלת</h3>
       <div class="chain" role="list">
         <div class="st" role="listitem"><b>בשיחה</b>המסך מציג את ההצעה, את המחיר ואת כפתור הרכישה</div>
@@ -421,7 +431,6 @@ pre .c{color:#a2eb9a}
       <h3>מה קיים בתוך המארחים</h3>
       <ul class="bullets">
         <li><b>‏ChatGPT.</b> יש מסך תשלום של ChatGPT בתוך אפליקציה (<code>requestCheckout</code>), ב-private beta ול"marketplaces נבחרים" בלבד. הוא נשען על Agentic Commerce Protocol ‏(ACP) של OpenAI ו-Stripe. <a class="src" href="https://developers.openai.com/apps-sdk/build/monetization">OpenAI</a></li>
-        <li><b>‏Claude.</b> אין יכולת תשלום מובנית. מחבר שמעביר כסף או נכסים פיננסיים לא מתקבל לספרייה. <a class="src" href="https://claude.com/docs/connectors/building/review-criteria">Claude</a></li>
         <li><b>‏Google.</b> פרוטוקולים משלה: UCP ל-checkout בחיפוש ובאפליקציית Gemini, ו-AP2 להרשאות תשלום של סוכנים. לא מצאנו תשלום בתוך <span class="nw">MCP Apps</span> ב-Gemini. <a class="src" href="https://blog.google/products/ads-commerce/agentic-commerce-ai-tools-protocol-retailers-platforms/">Google</a></li>
       </ul>
       <div class="tbl-wrap scroll-x">
@@ -502,12 +511,14 @@ pre .c{color:#a2eb9a}
           <thead><tr><th>שדה בתוצאת הכלי</th><th>המודל</th><th>המסך</th><th>למה</th></tr></thead>
           <tbody>
             <tr><th><code>content</code></th><td class="yes">רואה</td><td class="yes">רואה</td><td>טקסט קצר שהמודל יכול לסכם</td></tr>
-            <tr><th><code>structuredContent</code></th><td class="yes">רואה</td><td class="yes">רואה</td><td>הנתונים: בסיס לתשובת המודל ולמה שהמסך מציג</td></tr>
+            <tr><th><code>structuredContent</code></th><td>ב-ChatGPT רואה. לפי התקן, לא נכנס להקשר של המודל</td><td class="yes">רואה</td><td>הנתונים שהמסך מציג</td></tr>
             <tr><th><code>_meta</code></th><td class="no">לא רואה</td><td class="yes">רואה</td><td>נתונים לתצוגה בלבד</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="fine">לפי <a href="https://developers.openai.com/apps-sdk/reference">ה-Reference של OpenAI</a>. ‏<code>_meta</code> מוסתר מהמודל, אבל הוא לא תחליף להרשאות או לאחסון מאובטח.</p>
+      <p class="fine">לפי <a href="https://developers.openai.com/apps-sdk/reference">ה-Reference של OpenAI</a> ו<a href="https://github.com/modelcontextprotocol/ext-apps/blob/main/specification/2026-01-26/apps.mdx">מפרט <span class="nw">MCP Apps</span></a>. איך Claude מטפל בכל שדה לא מתועד בנפרד <span class="verify">לאמת</span></p>
+      <div class="callout">מידע רגיש שהמשתמש צריך לראות, והמודל לא, נשלח ב-<code>_meta</code> או דרך כלי שרק המסך רואה.
+        <span>זה מצמצם את מה שנכנס לשיחה, ולא מחליף אבטחה: המידע עובר דרך המארח, והאיסורים על מידע רגיש בתוקף.</span></div>
       <ul class="bullets">
         <li><b>כלי שרק המסך רואה.</b> ‏<code>_meta.ui.visibility: ["app"]</code> מסתיר כלי מהמודל. מתאים לרענון, לסינון או למעבר עמוד.</li>
         <li><b>הודעה לשיחה.</b> ‏<code>ui/message</code> (ב-ChatGPT: <code>sendFollowUpMessage</code>) שולח הודעה, והמודל מגיב לה.</li>
@@ -591,14 +602,15 @@ pre .c{color:#a2eb9a}
         <li>באילו תוכניות של ChatGPT המסכים זמינים היום, ומי יכול לחבר שרת פרטי לבדיקות (Developer mode). עמודי העזרה של OpenAI לא נפתחו לבדיקה ישירה.</li>
         <li>אם אפשר לרכוש Gemini Enterprise בישראל, ואיך המסכים נראים בטלפון ב-Gemini Enterprise וב-Microsoft 365 Copilot.</li>
         <li>איך המשתמש חוזר לשיחה אחרי תשלום באתר חיצוני.</li>
-        <li>אם ל-Claude יש כלל ייעודי על מכירת שירותים דיגיטליים.</li>
+        <li>אם ל-Claude יש כלל ייעודי על מכירת שירותים דיגיטליים או על פרטי כרטיס, ומה כתוב במדיניות העסקאות הפיננסיות שמאשרים בהגשה.</li>
+        <li>אילו שדות מתוצאת הכלי Claude מכניס להקשר של המודל.</li>
         <li>איך כל מארח משלב בשיחה עדכון שקט מהמסך.</li>
       </ul>
       <h3>מקורות עיקריים</h3>
       <ul class="refs">
         <li><a href="https://blog.modelcontextprotocol.io/posts/2026-01-26-mcp-apps/">MCP Apps · הודעת ההשקה</a> <span class="t">· 26/1/2026</span> · <a href="https://github.com/modelcontextprotocol/ext-apps/blob/main/specification/2026-01-26/apps.mdx">המפרט</a> · <a href="https://modelcontextprotocol.io/extensions/client-matrix">טבלת התמיכה</a></li>
         <li><a href="https://developers.openai.com/apps-sdk/mcp-apps-in-chatgpt">MCP Apps ב-ChatGPT</a> · <a href="https://developers.openai.com/apps-sdk/reference">Reference</a> · <a href="https://developers.openai.com/apps-sdk/app-submission-guidelines">הנחיות הגשה</a> · <a href="https://developers.openai.com/apps-sdk/build/monetization">מונטיזציה</a></li>
-        <li><a href="https://claude.com/blog/interactive-tools-in-claude">Interactive tools in Claude</a> · <a href="https://support.claude.com/en/articles/13454812-use-interactive-connectors-in-claude">מרכז העזרה</a> · <a href="https://claude.com/docs/connectors/building/review-criteria">קריטריוני סקירה</a></li>
+        <li><a href="https://claude.com/blog/interactive-tools-in-claude">Interactive tools in Claude</a> · <a href="https://support.claude.com/en/articles/13454812-use-interactive-connectors-in-claude">מרכז העזרה</a> · <a href="https://claude.com/docs/connectors/building/review-criteria">קריטריוני סקירה</a> · <a href="https://support.claude.com/en/articles/13145358">מדיניות הספרייה</a></li>
         <li><a href="https://cloud.google.com/blog/topics/developers-practitioners/devs-guide-to-mcp-apps-in-gemini">MCP Apps ב-Gemini Enterprise</a> <span class="t">· 20/10/2026</span></li>
         <li>זמינות בישראל: <a href="https://help.openai.com/en/articles/7947663-chatgpt-supported-countries">OpenAI</a> · <a href="https://www.anthropic.com/supported-countries">Anthropic</a> · <a href="https://docs.cloud.google.com/gemini/enterprise/docs/locations">Gemini Enterprise</a> · <a href="https://learn.microsoft.com/en-us/microsoft-365/enterprise/advanced-data-residency">Microsoft</a></li>
       </ul>
